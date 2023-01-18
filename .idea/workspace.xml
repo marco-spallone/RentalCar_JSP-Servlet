@@ -9,28 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.servlet.jsp.jstl-1.2.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.servlet.jsp.jstl-api-1.2.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/HibernateUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/AbstractDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/GenericRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Auto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Prenotazione.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Utente.java" afterDir="false" />
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Creazione DB e tabelle.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/UtentiDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/UtentiDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view_utente1.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/javax.servlet.jsp.jstl-1.2.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/javax.servlet.jsp.jstl-api-1.2.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Servlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/config/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AbstractDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/GenericRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Utente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +31,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -78,15 +70,24 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/marco/IdeaProjects/Progetto1/lib",
+    "last_opened_file_path": "C:/Users/marco/IdeaProjects/Progetto1/src/main/webapp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -97,10 +98,22 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\marco\IdeaProjects\Progetto1\src\main\webapp" />
+      <recent name="C:\Users\marco\IdeaProjects\Progetto1\src\main\java\lib" />
       <recent name="C:\Users\marco\IdeaProjects\Progetto1\lib" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marco\IdeaProjects\Progetto1\src\main\webapp" />
+      <recent name="C:\Users\marco\IdeaProjects\Progetto1\WebContent\jsps" />
+      <recent name="C:\Users\marco\IdeaProjects\Progetto1\src\main\java" />
+      <recent name="C:\Users\marco\IdeaProjects\Progetto1\src\main\java\config" />
+      <recent name="C:\Users\marco\IdeaProjects\Progetto1\src" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.HibernateUtil">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.71">
     <configuration name="HibernateUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="config.HibernateUtil" />
       <module name="Progetto1" />
@@ -115,6 +128,7 @@
       </method>
     </configuration>
     <configuration name="Tomcat 9.0.71" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.71" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Progetto1_war_exploded/provaServlet" />
       <deployment>
         <artifact name="Progetto1:war exploded">
           <settings>
@@ -130,6 +144,54 @@
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="60215" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -152,6 +214,10 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.HibernateUtil" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.71" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HibernateUtil" />
@@ -167,8 +233,23 @@
       <option name="presentableId" value="Default" />
       <updated>1673972967863</updated>
       <workItem from="1673972969081" duration="1913000" />
-      <workItem from="1674029027628" duration="9195000" />
+      <workItem from="1674029027628" duration="27307000" />
     </task>
+    <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
+      <created>1674038937915</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674038937916</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Creazione DB e tabelle.">
+      <created>1674038944226</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1674038944226</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,5 +265,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Creazione DB e tabelle." />
+    <option name="LAST_COMMIT_MESSAGE" value="Creazione DB e tabelle." />
   </component>
 </project>
