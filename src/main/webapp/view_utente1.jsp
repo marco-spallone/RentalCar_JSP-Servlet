@@ -3,9 +3,6 @@
 <html>
 <body>
 
-<c:forEach var="ut" items="${list}">
-    ${ut.nome}
-</c:forEach>
-
+<p>L'utente ${ut.cognome} ${ut.nome} è stato aggiornato con i seguenti dati: ${ut.cognome} ${ut.nome} ${ut.tipo}</p>
 </body>
 </html>

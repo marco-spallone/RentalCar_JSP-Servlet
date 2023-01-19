@@ -48,7 +48,7 @@ public class Utente implements Serializable {
         this.idUtente = idUtente;
     }
 
-    public boolean isTipo() {
+    public boolean getTipo() {
         return tipo;
     }
 
