@@ -32,7 +32,7 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
     }
 
     @Override
-    public void inserisciPrenotazione(Date inizio, Date fine, Utente u, List<Auto> a) {
+    public void inserisciPrenotazione(Date inizio, Date fine, Utente u, Auto a) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             session.beginTransaction();
             Prenotazione p = new Prenotazione();
@@ -40,7 +40,7 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
             p.setDataFine(fine);
             p.setUtente(u);
             p.setAuto(a);
-            session.persist(a);
+            session.persist(p);
             session.getTransaction().commit();
             session.close();
         } catch(Exception e){

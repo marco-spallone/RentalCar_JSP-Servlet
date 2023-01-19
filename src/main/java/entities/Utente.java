@@ -2,7 +2,9 @@ package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,7 +26,7 @@ public class Utente implements Serializable {
     private String cognome;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "utente", orphanRemoval = true)
-    private Set<Prenotazione> prenotazione = new HashSet<>();
+    private List<Prenotazione> prenotazione = new ArrayList<>();
 
     public Utente() {
 
@@ -34,10 +36,6 @@ public class Utente implements Serializable {
         this.tipo=tipo;
         this.nome=nome;
         this.cognome=cognome;
-    }
-
-    public Set<Prenotazione> getPrenotazioni() {
-        return prenotazione;
     }
 
     public int getIdUtente() {
@@ -72,7 +70,15 @@ public class Utente implements Serializable {
         this.cognome = cognome;
     }
 
-    public void setPrenotazioni(Set<Prenotazione> prenotazione) {
+    public boolean isTipo() {
+        return tipo;
+    }
+
+    public List<Prenotazione> getPrenotazione() {
+        return prenotazione;
+    }
+
+    public void setPrenotazione(List<Prenotazione> prenotazione) {
         this.prenotazione = prenotazione;
     }
 }

@@ -25,8 +25,9 @@ public class Prenotazione {
     @JoinColumn(name="id_utente", referencedColumnName = "id_utente")
     private Utente utente;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "prenotazione", orphanRemoval = true)
-    private List<Auto> auto = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name="id_auto", referencedColumnName = "id_auto")
+    private Auto auto = new Auto();
 
     public Prenotazione() {
     }
@@ -71,11 +72,11 @@ public class Prenotazione {
         this.utente = utente;
     }
 
-    public List<Auto> getAuto() {
+    public Auto getAuto() {
         return auto;
     }
 
-    public void setAuto(List<Auto> auto) {
+    public void setAuto(Auto auto) {
         this.auto = auto;
     }
 }

@@ -63,8 +63,8 @@ public class Servlet extends HttpServlet {
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ITALY);
         Date inizio;
         Date fine;
-        Utente u = daoUtente.trovaUtenteDaId(1);
-        List<Auto> a = daoAuto.elencoAuto();
+        Utente u = daoUtente.trovaUtenteDaId(2);
+        Auto a = daoAuto.trovaAutoDaTarga("GC019XL");
         try {
             inizio = dateFormat.parse(request.getParameter("inizio"));
             fine = dateFormat.parse(request.getParameter("fine"));

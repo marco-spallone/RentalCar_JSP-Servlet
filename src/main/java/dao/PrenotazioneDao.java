@@ -11,5 +11,5 @@ import java.util.Set;
 public interface PrenotazioneDao {
     List<Prenotazione> elencoPrenotazioni();
     Prenotazione trovaPrenotazioneDaId(int id);
-    void inserisciPrenotazione(Date inizio, Date fine, Utente u, List<Auto> a);
+    void inserisciPrenotazione(Date inizio, Date fine, Utente u, Auto a);
 }

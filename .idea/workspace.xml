@@ -9,20 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Implementazione UtentiDao e realizzazione delle operazioni necessarie per la classe Utenti.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/form2.html" afterDir="false" />
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Implementazione dei Dao e realizzazione delle operazioni necessarie per Utenti, Auto e Prenotazioni.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioniDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtentiDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtentiDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Prenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Utente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Servlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view_utente1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view_utente1.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +250,7 @@
       <updated>1673972967863</updated>
       <workItem from="1673972969081" duration="1913000" />
       <workItem from="1674029027628" duration="27307000" />
-      <workItem from="1674115376763" duration="21415000" />
+      <workItem from="1674115376763" duration="25501000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -280,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674129158517</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implementazione dei Dao e realizzazione delle operazioni necessarie per Utenti, Auto e Prenotazioni.">
+      <created>1674142761460</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674142761460</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,6 +300,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creazione DB e tabelle." />
     <MESSAGE value="Implementazione UtentiDao e realizzazione delle operazioni necessarie per la classe Utenti." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementazione UtentiDao e realizzazione delle operazioni necessarie per la classe Utenti." />
+    <MESSAGE value="Implementazione dei Dao e realizzazione delle operazioni necessarie per Utenti, Auto e Prenotazioni." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementazione dei Dao e realizzazione delle operazioni necessarie per Utenti, Auto e Prenotazioni." />
   </component>
 </project>
