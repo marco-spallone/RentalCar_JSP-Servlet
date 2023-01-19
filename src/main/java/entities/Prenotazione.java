@@ -1,9 +1,7 @@
 package entities;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name="prenotazione")
@@ -28,7 +26,7 @@ public class Prenotazione {
     private Utente utente;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "prenotazione", orphanRemoval = true)
-    private Set<Auto> auto = new HashSet<>();
+    private List<Auto> auto = new ArrayList<>();
 
     public Prenotazione() {
     }
@@ -73,11 +71,11 @@ public class Prenotazione {
         this.utente = utente;
     }
 
-    public Set<Auto> getAuto() {
+    public List<Auto> getAuto() {
         return auto;
     }
 
-    public void setAuto(Set<Auto> auto) {
+    public void setAuto(List<Auto> auto) {
         this.auto = auto;
     }
 }

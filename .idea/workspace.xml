@@ -9,14 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Creazione DB e tabelle.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioniDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/form.html" afterDir="false" />
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Implementazione UtentiDao e realizzazione delle operazioni necessarie per la classe Utenti.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/form2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtentiDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtentiDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtentiDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtentiDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioniDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtentiDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtentiDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Prenotazione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Servlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view_utente1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view_utente1.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,14 +32,27 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="Interface" />
         <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="5c5b12c4-d94f-49d3-85da-4e8b4c8cc802" />
+        <option name="url" value="https://github.com/marcospallonesi2001/Progetto1.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -109,7 +127,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.form.html">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.71">
     <configuration name="HibernateUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="config.HibernateUtil" />
       <module name="Progetto1" />
@@ -123,11 +141,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="form.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Progetto1/webapp/form.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="form.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/Progetto1_war_exploded/form.html">
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 9.0.71" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.71" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Progetto1_war_exploded/provaServlet" />
       <deployment>
         <artifact name="Progetto1:war exploded">
           <settings>
@@ -215,12 +235,14 @@
     </configuration>
     <list>
       <item itemvalue="Application.HibernateUtil" />
+      <item itemvalue="JavaScript Debug.form.html (1)" />
       <item itemvalue="JavaScript Debug.form.html" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.71" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.form.html" />
+        <item itemvalue="JavaScript Debug.form.html (1)" />
         <item itemvalue="Application.HibernateUtil" />
       </list>
     </recent_temporary>
@@ -235,7 +257,7 @@
       <updated>1673972967863</updated>
       <workItem from="1673972969081" duration="1913000" />
       <workItem from="1674029027628" duration="27307000" />
-      <workItem from="1674115376763" duration="12884000" />
+      <workItem from="1674115376763" duration="21415000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -251,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674038944226</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implementazione UtentiDao e realizzazione delle operazioni necessarie per la classe Utenti.">
+      <created>1674129158517</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674129158517</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +299,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creazione DB e tabelle." />
-    <option name="LAST_COMMIT_MESSAGE" value="Creazione DB e tabelle." />
+    <MESSAGE value="Implementazione UtentiDao e realizzazione delle operazioni necessarie per la classe Utenti." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementazione UtentiDao e realizzazione delle operazioni necessarie per la classe Utenti." />
   </component>
 </project>

@@ -1,23 +1,15 @@
 package dao;
 
 import config.HibernateUtil;
+import entities.Auto;
 import entities.Utente;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import javax.transaction.Transactional;
-import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
 import java.util.List;
 
-public class UtentiDaoImpl implements UtentiDao {
+public class UtenteDaoImpl implements UtenteDao {
     @Override
     public List<Utente> trovaUtenti() {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
@@ -36,6 +28,22 @@ public class UtentiDaoImpl implements UtentiDao {
             System.out.println(e);
         }
         return null;
+    }
+
+    @Override
+    public void inserisciUtente(String nome, String cognome, boolean tipo) {
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+            session.beginTransaction();
+            Utente u = new Utente();
+            u.setNome(nome);
+            u.setCognome(cognome);
+            u.setTipo(tipo);
+            session.persist(u);
+            session.getTransaction().commit();
+            session.close();
+        } catch(Exception e){
+            System.out.println(e);
+        }
     }
 
     @Override
