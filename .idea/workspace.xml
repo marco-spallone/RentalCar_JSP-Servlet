@@ -9,16 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Fix Mapping e inserimento Prenotazioni.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/ModifyServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" afterDir="false" />
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Creazione Header, implementazione homepage admin con Bootstrap e con una comunicazione bidirezionale JSP-Servlet. Creazione pagina di modifica dati utente con dati passati da un secondo servlet sempre in comunicazione bidirezionale.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/EliminazioneServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioniServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/confermaModifica.jsp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/home_admin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4ae57414-11f6-40d9-a4f6-6e9bb198f0df/storage_v2/_src_/schema/information_schema.FNRwLQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4ae57414-11f6-40d9-a4f6-6e9bb198f0df/storage_v2/_src_/schema/information_schema.FNRwLQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view_prenotazioni.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/HomeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view_utente1.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Prenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/ModifyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/ModifyServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/form2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +262,7 @@
       <workItem from="1674029027628" duration="27307000" />
       <workItem from="1674115376763" duration="27073000" />
       <workItem from="1674149233858" duration="2000" />
-      <workItem from="1674201960262" duration="9134000" />
+      <workItem from="1674201960262" duration="17440000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -293,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674146779612</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Creazione Header, implementazione homepage admin con Bootstrap e con una comunicazione bidirezionale JSP-Servlet. Creazione pagina di modifica dati utente con dati passati da un secondo servlet sempre in comunicazione bidirezionale.">
+      <created>1674211905887</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674211905888</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +328,7 @@
     <MESSAGE value="Implementazione UtentiDao e realizzazione delle operazioni necessarie per la classe Utenti." />
     <MESSAGE value="Implementazione dei Dao e realizzazione delle operazioni necessarie per Utenti, Auto e Prenotazioni." />
     <MESSAGE value="Fix Mapping e inserimento Prenotazioni." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Mapping e inserimento Prenotazioni." />
+    <MESSAGE value="Creazione Header, implementazione homepage admin con Bootstrap e con una comunicazione bidirezionale JSP-Servlet. Creazione pagina di modifica dati utente con dati passati da un secondo servlet sempre in comunicazione bidirezionale." />
+    <option name="LAST_COMMIT_MESSAGE" value="Creazione Header, implementazione homepage admin con Bootstrap e con una comunicazione bidirezionale JSP-Servlet. Creazione pagina di modifica dati utente con dati passati da un secondo servlet sempre in comunicazione bidirezionale." />
   </component>
 </project>

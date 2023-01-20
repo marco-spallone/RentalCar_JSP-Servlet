@@ -22,9 +22,19 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
     }
 
     @Override
+    public List<Prenotazione> prenotazioniPerUtente(int id) {
+        try(Session session= HibernateUtil.getSessionFactory().openSession()){
+            return session.createQuery("SELECT a FROM Prenotazione a WHERE a.utente=:id", Prenotazione.class).setParameter("id", id).list();
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
     public Prenotazione trovaPrenotazioneDaId(int id) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            return (Prenotazione) session.createQuery("SELECT a FROM Prenotazione a WHERE a.id = :id").setParameter("id", id).getSingleResult();
+            return (Prenotazione) session.createQuery("SELECT a FROM Prenotazione a WHERE a.utente.id = :id").setParameter("id", id).getSingleResult();
         } catch(Exception e){
             System.out.println(e);
         }

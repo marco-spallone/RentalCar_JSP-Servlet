@@ -10,6 +10,7 @@ import java.util.Set;
 
 public interface PrenotazioneDao {
     List<Prenotazione> elencoPrenotazioni();
+    List<Prenotazione> prenotazioniPerUtente(int id);
     Prenotazione trovaPrenotazioneDaId(int id);
     void inserisciPrenotazione(Date inizio, Date fine, Utente u, Auto a);
 }

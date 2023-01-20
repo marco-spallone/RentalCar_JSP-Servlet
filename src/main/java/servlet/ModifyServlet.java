@@ -15,13 +15,24 @@ import java.util.List;
 @WebServlet(name = "modifyServlet", value = "/modifyServlet")
 public class ModifyServlet extends HttpServlet {
 
+    int id;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UtenteDaoImpl daoUtente = new UtenteDaoImpl();
-
-        Utente u = daoUtente.trovaUtenteDaId(Integer.parseInt(request.getParameter("id")));
+        id=Integer.parseInt(request.getParameter("id"));
+        Utente u = daoUtente.trovaUtenteDaId(id);
         request.setAttribute("utente", u);
         RequestDispatcher dispatcher = request.getRequestDispatcher("modificaCustomer.jsp");
         dispatcher.forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UtenteDaoImpl daoUtente = new UtenteDaoImpl();
+        daoUtente.aggiornaUtente(id, req.getParameter("nome"), req.getParameter("cognome"),
+                Boolean.parseBoolean(req.getParameter("tipo")));
+        RequestDispatcher dispatcher = req.getRequestDispatcher("confermaModifica.jsp");
+        dispatcher.forward(req, resp);
     }
 }
