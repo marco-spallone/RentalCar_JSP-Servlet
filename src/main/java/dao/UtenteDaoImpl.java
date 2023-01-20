@@ -57,4 +57,15 @@ public class UtenteDaoImpl implements UtenteDao {
             System.out.println(e);
         }
     }
+
+    @Override
+    public void eliminaUtente(int id) {
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+            Transaction txn = session.beginTransaction();
+            session.createQuery("DELETE Utente u WHERE u.id=:id").setParameter("id", id).executeUpdate();
+            txn.commit();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+    }
 }

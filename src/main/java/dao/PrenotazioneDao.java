@@ -13,4 +13,6 @@ public interface PrenotazioneDao {
     List<Prenotazione> prenotazioniPerUtente(int id);
     Prenotazione trovaPrenotazioneDaId(int id);
     void inserisciPrenotazione(Date inizio, Date fine, Utente u, Auto a);
+    void aggiornaStatoPrenotazione(int id, boolean confermata);
+    void eliminaPrenotazione(int id);
 }

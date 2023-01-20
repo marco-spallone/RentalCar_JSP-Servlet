@@ -30,8 +30,7 @@ public class ModifyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UtenteDaoImpl daoUtente = new UtenteDaoImpl();
-        daoUtente.aggiornaUtente(id, req.getParameter("nome"), req.getParameter("cognome"),
-                Boolean.parseBoolean(req.getParameter("tipo")));
+        daoUtente.aggiornaUtente(id, req.getParameter("nome"), req.getParameter("cognome"),false);
         RequestDispatcher dispatcher = req.getRequestDispatcher("confermaModifica.jsp");
         dispatcher.forward(req, resp);
     }

@@ -9,5 +9,5 @@ public interface UtenteDao {
     Utente trovaUtenteDaId(int id);
     void inserisciUtente(String nome, String cognome, boolean tipo);
     void aggiornaUtente(int id, String nome, String cognome, boolean tipo);
-
+    void eliminaUtente(int id);
 }
