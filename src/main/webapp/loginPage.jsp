@@ -27,19 +27,6 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="utenteServletServlet">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Parco Auto</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Profilo utente</a>
-      </li>
-    </ul>
-  </div>
 </nav>
 
 <!--LOGIN-->
@@ -48,6 +35,7 @@
     <div class="mx-auto mt-5 col-sm-3">
       <h2>Login</h2>
       <form action="utenteServlet" method="post">
+        <input type="hidden" name="action" value="login">
         <label for="user">Username: </label><input type="text" name="user" id="user" placeholder="Username" class="form-control">
         <label for="pass">Password: </label><input type="password" name="pass" id="pass" placeholder="Password" class="form-control">
         <button type="submit" class="btn btn-warning mt-3">Entra</button>

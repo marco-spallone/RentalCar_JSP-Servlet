@@ -26,7 +26,7 @@
                 <a class="nav-link" href="utenteServlet">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Parco Auto</a>
+                <a class="nav-link" href="parcoAuto.jsp">Parco Auto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Profilo utente</a>
@@ -43,7 +43,7 @@
                 <h2 class="mx-auto">Customers</h2>
             </div>
             <div class="row"><div class="mt-4 mb-4 col-sm-1">
-                <a href="aggiungiUtente.jsp"><i class="fa-sharp fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></a>
+                <a href="aggiungiCliente.jsp"><i class="fa-sharp fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></a>
             </div></div>
             <div id="tabUtenti">
                 <table class="table table-striped" id="tab">

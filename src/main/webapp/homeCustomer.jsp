@@ -18,10 +18,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="utenteServlet">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Parco Auto</a>
+        <a class="nav-link" href="prenotazioneServlet">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Profilo utente</a>

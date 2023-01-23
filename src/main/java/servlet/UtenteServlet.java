@@ -1,5 +1,6 @@
 package servlet;
 
+import dao.UtenteDao;
 import dao.UtenteDaoImpl;
 import entities.Utente;
 
@@ -10,12 +11,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JOptionPane;
+
 
 @WebServlet(name = "utenteServlet", value = "/utenteServlet")
 public class UtenteServlet extends HttpServlet {
+    private final UtenteDao utenteDao = new UtenteDaoImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UtenteDaoImpl utenteDao = new UtenteDaoImpl();
         List<Utente> utenti = utenteDao.trovaUtenti();
         List<Utente> customers = new ArrayList<>();
         for (Utente u : utenti) {
@@ -30,7 +34,6 @@ public class UtenteServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UtenteDaoImpl utenteDao = new UtenteDaoImpl();
         Utente u = new Utente();
         if(request.getParameter("id")!=null){
             u.setIdUtente(Integer.parseInt(request.getParameter("id")));
@@ -40,16 +43,43 @@ public class UtenteServlet extends HttpServlet {
         u.setUsername(request.getParameter("user"));
         u.setPassword(request.getParameter("pass"));
         u.setTipo(false);
-        if(Objects.equals(request.getParameter("action"), "modifica") || Objects.equals(request.getParameter("action"), "aggiungi")){
+        if(request.getParameter("action").equals("modifica") || request.getParameter("action").equals("aggiungi")){
             utenteDao.inserisciOAggiornaUtente(u);
             request.setAttribute("action", "modifica_utente");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("confermaModifica.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
             dispatcher.forward(request, response);
-        } else if(Objects.equals(request.getParameter("action"), "elimina")){
+        } else if(request.getParameter("action").equals("elimina")){
             utenteDao.eliminaUtente(Integer.parseInt(request.getParameter("id")));
             request.setAttribute("action", "elimina_utente");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("confermaModifica.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
             dispatcher.forward(request, response);
+        } else if(Objects.equals(request.getParameter("action"), "login")){
+            List<Utente> utenti = utenteDao.trovaUtenti();
+            Utente utenteLoggato = new Utente();
+            boolean login = false;
+            for(Utente utente:utenti) {
+                if(utente.getUsername().equals(request.getParameter("user")) && utente.getPassword().equals(request.getParameter("pass"))){
+                    login = true;
+                    utenteLoggato = utente;
+                }
+            }
+            if(login){
+                request.setAttribute("utente", utenteLoggato);
+                request.setAttribute("action", "redirect");
+                if(utenteLoggato.getTipo()){
+                    request.setAttribute("tipo", 1);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
+                    dispatcher.forward(request, response);
+                } else {
+                    request.setAttribute("tipo", 0);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
+                    dispatcher.forward(request, response);
+                }
+            } else {
+                request.setAttribute("action", "login_failed");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
+                dispatcher.forward(request, response);
+            }
         }
     }
 }

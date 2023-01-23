@@ -44,19 +44,40 @@
         <c:choose>
           <c:when test="${action=='modifica_utente'}">
             <h3>Utente modificato con successo!</h3>
+            <a href="utenteServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
           </c:when>
           <c:when test="${action=='elimina_utente'}">
             <h3>Utente eliminato con successo!</h3>
+            <a href="utenteServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
           </c:when>
           <c:when test="${action=='conferma_prenotazione'}">
             <h3>Prenotazione accettata!</h3>
+            <a href="utenteServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
           </c:when>
           <c:when test="${action=='rifiuta_prenotazione'}">
             <h3>Prenotazione rifiutata!</h3>
+            <a href="utenteServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
+          </c:when>
+          <c:when test="${action=='login_failed'}">
+            <script type="text/javascript">
+              window.alert("LOGIN ERRATO!");
+              window.location.href='loginPage.jsp';
+            </script>
+          </c:when>
+          <c:when test="${action=='redirect'}">
+            <h2>Benvenuto ${utente.nome}</h2>
+            <c:choose>
+              <c:when test="${tipo==1}">
+                <a href="utenteServlet"><button type="button" class="btn btn-success">Vai alla home</button></a>
+              </c:when>
+              <c:when test="${tipo==0}">
+                <a href="prenotazioneServlet?id=${utente.idUtente}"><button type="button" class="btn btn-success">Vai alla home</button></a>
+              </c:when>
+            </c:choose>
           </c:when>
         </c:choose>
 
-        <a href="utenteServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
+
       </div>
   </div>
 </div>

@@ -27,7 +27,7 @@
         <a class="nav-link" href="utenteServlet">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Parco Auto</a>
+        <a class="nav-link" href="parcoAuto.jsp">Parco Auto</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Profilo utente</a>
@@ -40,7 +40,7 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto mt-5 col-sm-6">
-      <h2>Aggiungi utente</h2>
+      <h2>Aggiungi cliente</h2>
       <form action="utenteServlet" method="post">
         <input type="hidden" name="action" value="aggiungi">
         <div class="mb-3">

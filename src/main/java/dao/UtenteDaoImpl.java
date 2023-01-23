@@ -41,19 +41,6 @@ public class UtenteDaoImpl implements UtenteDao {
         }
     }
 
-    /*@Override
-    @Transactional
-    public void aggiornaUtente(int id, String nome, String cognome, boolean tipo) {
-        try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            Transaction txn = session.beginTransaction();
-            session.createQuery("UPDATE Utente as u SET nome=:nome,cognome=:cognome,tipo=:tipo WHERE u.id=:id").setParameter("tipo", tipo)
-                    .setParameter("nome", nome).setParameter("cognome", cognome).setParameter("id", id).executeUpdate();
-            txn.commit();
-        } catch(Exception e){
-            System.out.println(e);
-        }
-    }*/
-
     @Override
     public void eliminaUtente(int id) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){

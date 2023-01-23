@@ -39,7 +39,7 @@
 <div class="container">
     <div class="row">
         <div class="mx-auto mt-5 col-sm-6">
-            <h3>Prenotazioni effettuate dall'utente: ${cognomeUt} ${nomeUt}</h3>
+            <h3>Prenotazioni effettuate</h3>
             <div id="tabPrenotazioni">
                 <table class="table table-striped" id="tab">
                     <thead>

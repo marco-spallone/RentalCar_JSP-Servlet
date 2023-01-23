@@ -38,10 +38,12 @@ public class Utente implements Serializable {
 
     }
 
-    public Utente(boolean tipo, String nome, String cognome){
+    public Utente(boolean tipo, String nome, String cognome, String username, String password){
         this.tipo=tipo;
         this.nome=nome;
         this.cognome=cognome;
+        this.username=username;
+        this.password=password;
     }
 
     public int getIdUtente() {
