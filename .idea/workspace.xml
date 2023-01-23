@@ -9,31 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Ultimata la creazione della navigazione. Implementazione di tutte le specifiche per l'utente admin.">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/HomeCustomerServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/homeCustomer.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parcoAutoAdmin.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/utenteEliminato.jsp" afterDir="false" />
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Cambio struttura progetto dopo chiamata con Manuel.">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/loginPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Auto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Auto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/AggiungiUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/AggiungiUtenteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/ConfermaPrenotazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/ConfermaPrenotazioneServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/EliminazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/EliminazioneServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/HomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/HomeAdminServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/ModifyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/ModifyServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioniServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/RifiutaPrenotazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/RifiutaPrenotazioneServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiUtente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/confermaAggiunta.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/confermaAggiunta.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/confermaModifica.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/confermaModifica.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/homeCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeCustomer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/parcoAutoAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parcoAutoAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +145,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 9.0.71" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.71" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Progetto1_war_exploded/utenteServlet" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Progetto1_war_exploded/loginPage.jsp" />
       <deployment>
         <artifact name="Progetto1:war exploded">
           <settings>
@@ -274,7 +258,7 @@
       <workItem from="1674115376763" duration="27073000" />
       <workItem from="1674149233858" duration="2000" />
       <workItem from="1674201960262" duration="31075000" />
-      <workItem from="1674460990933" duration="13099000" />
+      <workItem from="1674460990933" duration="15318000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -332,7 +316,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674235714397</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Cambio struttura progetto dopo chiamata con Manuel.">
+      <created>1674474432824</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674474432824</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,17 +348,7 @@
     <MESSAGE value="Creazione Header, implementazione homepage admin con Bootstrap e con una comunicazione bidirezionale JSP-Servlet. Creazione pagina di modifica dati utente con dati passati da un secondo servlet sempre in comunicazione bidirezionale." />
     <MESSAGE value="Implementazione modifica dati e servlet per visualizzare le prenotazioni. Aggiustamenti di front-end e di back-end per la home page." />
     <MESSAGE value="Ultimata la creazione della navigazione. Implementazione di tutte le specifiche per l'utente admin." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ultimata la creazione della navigazione. Implementazione di tutte le specifiche per l'utente admin." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/servlet/AggiungiUtenteServlet.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Cambio struttura progetto dopo chiamata con Manuel." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambio struttura progetto dopo chiamata con Manuel." />
   </component>
 </project>

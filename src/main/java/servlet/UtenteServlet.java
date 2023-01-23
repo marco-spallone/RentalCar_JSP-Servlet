@@ -37,6 +37,8 @@ public class UtenteServlet extends HttpServlet {
         }
         u.setNome(request.getParameter("nome"));
         u.setCognome(request.getParameter("cognome"));
+        u.setUsername(request.getParameter("user"));
+        u.setPassword(request.getParameter("pass"));
         u.setTipo(false);
         if(Objects.equals(request.getParameter("action"), "modifica") || Objects.equals(request.getParameter("action"), "aggiungi")){
             utenteDao.inserisciOAggiornaUtente(u);

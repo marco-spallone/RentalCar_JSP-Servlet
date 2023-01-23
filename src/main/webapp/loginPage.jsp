@@ -1,19 +1,26 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: marco
-  Date: 20/01/2023
-  Time: 12:33
+  Date: 23/01/2023
+  Time: 13:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Conferma modifica!</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Login</title>
 </head>
 <body>
+
+<html>
+<head>
+  <title>Aggiungi utente</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+<body>
+
 <!-- HEADER -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Rental Car</a>
@@ -23,7 +30,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="utenteServlet">Home</a>
+        <a class="nav-link" href="utenteServletServlet">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Parco Auto</a>
@@ -35,29 +42,17 @@
   </div>
 </nav>
 
-<!--CONFERMA-->
+<!--LOGIN-->
 <div class="container">
-  <div class="row"></div>
-  <div class="row"></div>
-    <div class="row">
-      <div class="mx-auto mt-5 text-center col-sm-6">
-        <c:choose>
-          <c:when test="${action=='modifica_utente'}">
-            <h3>Utente modificato con successo!</h3>
-          </c:when>
-          <c:when test="${action=='elimina_utente'}">
-            <h3>Utente eliminato con successo!</h3>
-          </c:when>
-          <c:when test="${action=='conferma_prenotazione'}">
-            <h3>Prenotazione accettata!</h3>
-          </c:when>
-          <c:when test="${action=='rifiuta_prenotazione'}">
-            <h3>Prenotazione rifiutata!</h3>
-          </c:when>
-        </c:choose>
-
-        <a href="utenteServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
-      </div>
+  <div class="row">
+    <div class="mx-auto mt-5 col-sm-3">
+      <h2>Login</h2>
+      <form action="utenteServlet" method="post">
+        <label for="user">Username: </label><input type="text" name="user" id="user" placeholder="Username" class="form-control">
+        <label for="pass">Password: </label><input type="password" name="pass" id="pass" placeholder="Password" class="form-control">
+        <button type="submit" class="btn btn-warning mt-3">Entra</button>
+      </form>
+    </div>
   </div>
 </div>
 

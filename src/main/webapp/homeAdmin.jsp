@@ -9,6 +9,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -38,12 +40,10 @@
     <div class="row">
         <div class="mx-auto mt-5 col-sm-6">
             <div class="col-sm-3">
-                <h3 class="mx-auto">Customers</h3>
+                <h2 class="mx-auto">Customers</h2>
             </div>
-            <div class="row"><div class="col-sm-1">
-                <a href="aggiungiUtente.jsp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-                </svg></a>
+            <div class="row"><div class="mt-4 mb-4 col-sm-1">
+                <a href="aggiungiUtente.jsp"><i class="fa-sharp fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></a>
             </div></div>
             <div id="tabUtenti">
                 <table class="table table-striped" id="tab">
@@ -60,26 +60,20 @@
                             <td>${utenti.cognome}</td>
                             <td>
                                 <a href="modificaCustomer.jsp?id=${utenti.idUtente}">
-                                    <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                                    </svg></button>
+                                    <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
                                 </a>
                             </td>
                             <td>
                                 <form action="prenotazioneServlet" method="get">
                                     <input type="hidden" name="id" value=${utenti.idUtente}>
-                                    <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                                    </svg></button>
+                                    <button type="submit" class="btn"><i class="fa-regular fa-calendar fa-lg" style="color: green"></i></button>
                                 </form>
                             </td>
                             <td>
                                 <form action="utenteServlet" method="post">
                                     <input type="hidden" name="action" value="elimina">
                                     <input type="hidden" name="id" value="${utenti.idUtente}">
-                                    <button type="submit"><svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                                    </svg></button>
+                                    <button type="submit" class="btn"><i class="fa-solid fa-trash fa-lg" style="color: red"></i></button>
                                 </form>
                             </td>
                         </tr>

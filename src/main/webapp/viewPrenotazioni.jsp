@@ -83,7 +83,7 @@
                     </tbody>
                 </table>
             </div>
-            <a href="homeAdminServlet"><button type="button" class="btn btn-black">Indietro</button></a>
+            <a href="utenteServlet"><button type="button" class="btn btn-black">Indietro</button></a>
         </div>
     </div>
 </div>

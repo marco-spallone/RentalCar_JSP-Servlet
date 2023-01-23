@@ -25,6 +25,12 @@ public class Utente implements Serializable {
     @Column(name="cognome")
     private String cognome;
 
+    @Column(name="username")
+    private String username;
+
+    @Column(name="password")
+    private String password;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "utente", orphanRemoval = true)
     private List<Prenotazione> prenotazione = new ArrayList<>();
 
@@ -72,6 +78,22 @@ public class Utente implements Serializable {
 
     public boolean isTipo() {
         return tipo;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Prenotazione> getPrenotazione() {
