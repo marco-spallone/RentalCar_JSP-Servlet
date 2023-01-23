@@ -9,22 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Aggiunta di pagina login e dei relativi campi username e password nell'entità Utente.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/AutoServlet.java" afterDir="false" />
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Correzione e ottimizzazione secondo indicazioni di Fabio. Implementazione login e routing tra le vare pagine in base al tipo di utente.">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiAuto.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/modificaAuto.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiCliente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/confermaModifica.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/feedback.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/AutoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/AutoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/feedback.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/feedback.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/homeCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/loginPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/loginPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/parcoAutoAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +258,7 @@
       <workItem from="1674115376763" duration="27073000" />
       <workItem from="1674149233858" duration="2000" />
       <workItem from="1674201960262" duration="31075000" />
-      <workItem from="1674460990933" duration="25393000" />
+      <workItem from="1674460990933" duration="29076000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -336,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674476661241</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Correzione e ottimizzazione secondo indicazioni di Fabio. Implementazione login e routing tra le vare pagine in base al tipo di utente.">
+      <created>1674488712317</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1674488712317</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,6 +364,7 @@
     <MESSAGE value="Ultimata la creazione della navigazione. Implementazione di tutte le specifiche per l'utente admin." />
     <MESSAGE value="Cambio struttura progetto dopo chiamata con Manuel." />
     <MESSAGE value="Aggiunta di pagina login e dei relativi campi username e password nell'entità Utente." />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta di pagina login e dei relativi campi username e password nell'entità Utente." />
+    <MESSAGE value="Correzione e ottimizzazione secondo indicazioni di Fabio. Implementazione login e routing tra le vare pagine in base al tipo di utente." />
+    <option name="LAST_COMMIT_MESSAGE" value="Correzione e ottimizzazione secondo indicazioni di Fabio. Implementazione login e routing tra le vare pagine in base al tipo di utente." />
   </component>
 </project>

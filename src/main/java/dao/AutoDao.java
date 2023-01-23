@@ -7,6 +7,6 @@ import java.util.List;
 public interface AutoDao {
     List<Auto> elencoAuto();
     Auto trovaAutoDaTarga(String targa);
-    void inserisciAuto(Auto a);
-    void eliminaAuto(String targa);
+    void inserisciOAggiornaAuto(Auto a);
+    void eliminaAuto(int id);
 }

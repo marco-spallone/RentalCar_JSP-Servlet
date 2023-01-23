@@ -45,8 +45,8 @@
       <div class="col-sm-3">
         <h2 class="mx-auto">Auto</h2>
       </div>
-      <div class="row"><div class="mt-4 mb-4 col-sm-1">
-        <a href="aggiungiAuto.jsp"><i class="fa-sharp fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></a>
+      <div class="row"><div class="mt-4 mb-4 col-sm-4">
+        <a href="aggiungiAuto.jsp"><i class="fa-solid fa-car fa-lg" style="color: dodgerblue"></i></a>
       </div></div>
       <div id="tabAuto">
         <table class="table table-striped" id="tab">
@@ -68,14 +68,14 @@
               <td>${auto.prezzo}</td>
               <td>${auto.targa}</td>
               <td>
-                <a href="modificaAuto.jsp">
+                <a href="modificaAuto.jsp?id=${auto.idAuto}">
                   <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
                 </a>
               </td>
               <td>
                 <form action="autoServlet" method="post">
                   <input type="hidden" name="action" value="elimina">
-                  <input type="hidden" name="id" value="${utenti.idUtente}">
+                  <input type="hidden" name="id" value="${auto.idAuto}">
                   <button type="submit" class="btn"><i class="fa-solid fa-trash fa-lg" style="color: red"></i></button>
                 </form>
               </td>

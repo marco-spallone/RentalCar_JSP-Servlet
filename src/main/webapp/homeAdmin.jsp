@@ -26,7 +26,7 @@
                 <a class="nav-link" href="utenteServlet">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="parcoAuto.jsp">Parco Auto</a>
+                <a class="nav-link" href="autoServlet">Parco Auto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Profilo utente</a>

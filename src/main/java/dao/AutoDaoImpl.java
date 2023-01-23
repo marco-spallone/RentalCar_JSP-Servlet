@@ -31,10 +31,10 @@ public class AutoDaoImpl implements AutoDao{
     }
 
     @Override
-    public void inserisciAuto(Auto a) {
+    public void inserisciOAggiornaAuto(Auto a) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             session.beginTransaction();
-            session.persist(a);
+            session.saveOrUpdate(a);
             session.getTransaction().commit();
             session.close();
         } catch(Exception e){
@@ -42,24 +42,11 @@ public class AutoDaoImpl implements AutoDao{
         }
     }
 
-    /*@Override
-    public void aggiornaAuto(int id, String marca, String modello, int anno, double prezzo, String targa) {
-        try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            Transaction txn = session.beginTransaction();
-            session.createQuery("UPDATE Auto as a SET a.marca=:marca, a.modello=:modello, a.anno=:anno, a.prezzo=:prezzo, a.targa=:targa " +
-                            "WHERE a.id=:id").setParameter("marca", marca).setParameter("modello", modello).setParameter("anno", anno).
-                            setParameter("prezzo", prezzo).setParameter("targa", targa).setParameter("id", id).executeUpdate();
-            txn.commit();
-        } catch(Exception e){
-            System.out.println(e);
-        }
-    }*/
-
     @Override
-    public void eliminaAuto(String targa) {
+    public void eliminaAuto(int id) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             Transaction txn = session.beginTransaction();
-            session.createQuery("DELETE Auto as a WHERE a.targa=:targa").setParameter("targa", targa).executeUpdate();
+            session.createQuery("DELETE Auto as a WHERE a.id=:id").setParameter("id", id).executeUpdate();
             txn.commit();
         } catch(Exception e){
             System.out.println(e);

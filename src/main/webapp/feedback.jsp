@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Conferma modifica!</title>
+    <title>Rental Car</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </head>
@@ -52,17 +52,25 @@
           </c:when>
           <c:when test="${action=='conferma_prenotazione'}">
             <h3>Prenotazione accettata!</h3>
-            <a href="utenteServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
+            <a href="prenotazioneServlet"><button type="button" class="btn btn-success">Torna alle prenotazioni</button></a>
           </c:when>
           <c:when test="${action=='rifiuta_prenotazione'}">
             <h3>Prenotazione rifiutata!</h3>
-            <a href="utenteServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
+            <a href="prenotazioneServlet"><button type="button" class="btn btn-success">Torna alle prenotazioni</button></a>
           </c:when>
           <c:when test="${action=='login_failed'}">
             <script type="text/javascript">
               window.alert("LOGIN ERRATO!");
               window.location.href='loginPage.jsp';
             </script>
+          </c:when>
+          <c:when test="${action=='modifica_auto'}">
+            <h3>Auto modificata con successo!</h3>
+            <a href="autoServlet"><button type="button" class="btn btn-success">Torna al parco auto</button></a>
+          </c:when>
+          <c:when test="${action=='elimina_auto'}">
+            <h3>Auto eliminata con successo!</h3>
+            <a href="autoServlet"><button type="button" class="btn btn-success">Torna al parco auto</button></a>
           </c:when>
           <c:when test="${action=='redirect'}">
             <h2>Benvenuto ${utente.nome}</h2>
