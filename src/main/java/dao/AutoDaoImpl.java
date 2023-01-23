@@ -31,15 +31,9 @@ public class AutoDaoImpl implements AutoDao{
     }
 
     @Override
-    public void inserisciAuto(String marca, String modello, int anno, double prezzo, String targa) {
+    public void inserisciAuto(Auto a) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             session.beginTransaction();
-            Auto a = new Auto();
-            a.setMarca(marca);
-            a.setModello(modello);
-            a.setAnno(anno);
-            a.setPrezzo(prezzo);
-            a.setTarga(targa);
             session.persist(a);
             session.getTransaction().commit();
             session.close();
@@ -48,7 +42,7 @@ public class AutoDaoImpl implements AutoDao{
         }
     }
 
-    @Override
+    /*@Override
     public void aggiornaAuto(int id, String marca, String modello, int anno, double prezzo, String targa) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             Transaction txn = session.beginTransaction();
@@ -59,7 +53,7 @@ public class AutoDaoImpl implements AutoDao{
         } catch(Exception e){
             System.out.println(e);
         }
-    }
+    }*/
 
     @Override
     public void eliminaAuto(String targa) {

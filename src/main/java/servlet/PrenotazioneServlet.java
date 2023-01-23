@@ -10,9 +10,10 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
-@WebServlet(name = "prenotazioniServlet", value = "/prenotazioniServlet")
-public class PrenotazioniServlet extends HttpServlet {
+@WebServlet(name = "prenotazioneServlet", value = "/prenotazioneServlet")
+public class PrenotazioneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrenotazioneDaoImpl prenotazioneDao = new PrenotazioneDaoImpl();
@@ -33,6 +34,19 @@ public class PrenotazioniServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        PrenotazioneDaoImpl prenotazioneDao = new PrenotazioneDaoImpl();
+        if(Objects.equals(request.getParameter("action"), "conferma")){
+            int id= Integer.parseInt(request.getParameter("id"));
+            prenotazioneDao.aggiornaStatoPrenotazione(id, true);
+            request.setAttribute("action", "conferma_prenotazione");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("confermaModifica.jsp");
+            dispatcher.forward(request, response);
+        } else if(Objects.equals(request.getParameter("action"), "rifiuta")){
+            int id= Integer.parseInt(request.getParameter("id"));
+            prenotazioneDao.eliminaPrenotazione(id);
+            request.setAttribute("action", "rifiuta_prenotazione");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("confermaModifica.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 }

@@ -1,13 +1,15 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="auto")
 public class Auto {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_auto")
     private int idAuto;
 
@@ -26,9 +28,8 @@ public class Auto {
     @Column(name="targa")
     private String targa;
 
-    @ManyToOne
-    @JoinColumn(name="id_prenotazione", referencedColumnName = "id_prenotazione")
-    private Prenotazione prenotazione;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "idPrenotazione", orphanRemoval = true)
+    private List<Prenotazione> prenotazione = new ArrayList<>();
 
     public Auto() {
     }
@@ -81,11 +82,11 @@ public class Auto {
         this.targa = targa;
     }
 
-    public Prenotazione getPrenotazione() {
+    public List<Prenotazione> getPrenotazione() {
         return prenotazione;
     }
 
-    public void setPrenotazione(Prenotazione prenotazione) {
+    public void setPrenotazione(List<Prenotazione> prenotazione) {
         this.prenotazione = prenotazione;
     }
 }

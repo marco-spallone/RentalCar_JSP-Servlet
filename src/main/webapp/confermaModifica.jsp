@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: marco
@@ -22,7 +23,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="homeServlet">Home</a>
+        <a class="nav-link" href="homeAdminServlet">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Parco Auto</a>
@@ -40,8 +41,22 @@
   <div class="row"></div>
     <div class="row">
       <div class="mx-auto mt-5 text-center col-sm-6">
-        <h3>Utente modificato con successo!</h3>
-        <a href="homeServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
+        <c:choose>
+          <c:when test="${action=='modifica_utente'}">
+            <h3>Utente modificato con successo!</h3>
+          </c:when>
+          <c:when test="${action=='elimina_utente'}">
+            <h3>Utente eliminato con successo!</h3>
+          </c:when>
+          <c:when test="${action=='conferma_prenotazione'}">
+            <h3>Prenotazione accettata!</h3>
+          </c:when>
+          <c:when test="${action=='rifiuta_prenotazione'}">
+            <h3>Prenotazione rifiutata!</h3>
+          </c:when>
+        </c:choose>
+
+        <a href="utenteServlet"><button type="button" class="btn btn-success">Torna alla home</button></a>
       </div>
   </div>
 </div>
