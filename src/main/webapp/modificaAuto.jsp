@@ -34,6 +34,9 @@
       </li>
     </ul>
   </div>
+  <div class="nav navbar-nav navbar-right">
+    <a href="loginPage.jsp" class="navbar-brand"><button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Esci</button></a>
+  </div>
 </nav>
 
 <!--FORM DI MODIFICA-->

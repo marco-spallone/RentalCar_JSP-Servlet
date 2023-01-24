@@ -25,6 +25,9 @@
       </li>
     </ul>
   </div>
+  <div class="nav navbar-nav navbar-right">
+    <a href="loginPage.jsp" class="navbar-brand"><button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Esci</button></a>
+  </div>
 </nav>
 
 <div class="container">
@@ -33,6 +36,9 @@
       <div class="col-sm-3">
         <h3 class="mx-auto">Prenotazioni</h3>
       </div>
+      <div class="row"><div class="mt-4 mb-4 col-sm-1">
+        <a href="aggiungiPrenotazione.jsp"><i class="fa-regular fa-calendar-circle-plus fa-lg"></i></a>
+      </div></div>
       <div id="tabPrenotazioni">
         <table class="table table-striped" id="tab">
           <thead>

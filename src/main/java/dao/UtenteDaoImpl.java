@@ -22,7 +22,7 @@ public class UtenteDaoImpl implements UtenteDao {
     @Override
     public Utente trovaUtenteDaId(int id) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            return (Utente) session.createQuery("SELECT a FROM Utente a WHERE a.id = :id").setParameter("id", id).getSingleResult();
+            return session.createQuery("SELECT a FROM Utente a WHERE a.id = :id", Utente.class).setParameter("id", id).getSingleResult();
         } catch(Exception e){
             System.out.println(e);
         }
@@ -35,7 +35,6 @@ public class UtenteDaoImpl implements UtenteDao {
             session.beginTransaction();
             session.saveOrUpdate(u);
             session.getTransaction().commit();
-            session.close();
         } catch(Exception e){
             System.out.println(e);
         }

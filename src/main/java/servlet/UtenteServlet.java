@@ -43,43 +43,43 @@ public class UtenteServlet extends HttpServlet {
         u.setUsername(request.getParameter("user"));
         u.setPassword(request.getParameter("pass"));
         u.setTipo(false);
-        if(request.getParameter("action").equals("modifica") || request.getParameter("action").equals("aggiungi")){
-            utenteDao.inserisciOAggiornaUtente(u);
-            request.setAttribute("action", "modifica_utente");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
-            dispatcher.forward(request, response);
-        } else if(request.getParameter("action").equals("elimina")){
-            utenteDao.eliminaUtente(Integer.parseInt(request.getParameter("id")));
-            request.setAttribute("action", "elimina_utente");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
-            dispatcher.forward(request, response);
-        } else if(Objects.equals(request.getParameter("action"), "login")){
-            List<Utente> utenti = utenteDao.trovaUtenti();
-            Utente utenteLoggato = new Utente();
-            boolean login = false;
-            for(Utente utente:utenti) {
-                if(utente.getUsername().equals(request.getParameter("user")) && utente.getPassword().equals(request.getParameter("pass"))){
-                    login = true;
-                    utenteLoggato = utente;
+        RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
+        switch (request.getParameter("action")){
+            case "modifica":
+            case "aggiungi":
+                utenteDao.inserisciOAggiornaUtente(u);
+                request.setAttribute("action", "modifica_utente");
+                break;
+            case "elimina":
+                utenteDao.eliminaUtente(Integer.parseInt(request.getParameter("id")));
+                request.setAttribute("action", "elimina_utente");
+                break;
+            case "login":
+                List<Utente> utenti = utenteDao.trovaUtenti();
+                Utente utenteLoggato = new Utente();
+                boolean login = false;
+                for(Utente utente:utenti) {
+                    if(utente.getUsername().equals(request.getParameter("user")) && utente.getPassword().equals(request.getParameter("pass"))){
+                        login = true;
+                        utenteLoggato = utente;
+                    }
                 }
-            }
-            if(login){
-                request.setAttribute("utente", utenteLoggato);
-                request.setAttribute("action", "redirect");
-                if(utenteLoggato.getTipo()){
-                    request.setAttribute("tipo", 1);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
-                    dispatcher.forward(request, response);
+                if(login){
+                    request.setAttribute("utente", utenteLoggato);
+                    request.setAttribute("action", "redirect");
+                    if(utenteLoggato.getTipo()){
+                        request.setAttribute("tipo", 1);
+                    } else {
+                        request.setAttribute("tipo", 0);
+                    }
                 } else {
-                    request.setAttribute("tipo", 0);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
-                    dispatcher.forward(request, response);
+                    request.setAttribute("action", "login_failed");
                 }
-            } else {
-                request.setAttribute("action", "login_failed");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
-                dispatcher.forward(request, response);
-            }
+                break;
+            default:
+                System.out.println("ERRORE");
+                break;
         }
+        dispatcher.forward(request, response);
     }
 }

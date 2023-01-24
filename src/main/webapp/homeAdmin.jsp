@@ -9,7 +9,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -33,6 +32,9 @@
             </li>
         </ul>
     </div>
+    <div class="nav navbar-nav navbar-right">
+        <a href="loginPage.jsp" class="navbar-brand"><button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Esci</button></a>
+    </div>
 </nav>
 
 <!--TABELLA UTENTI-->
@@ -43,7 +45,7 @@
                 <h2 class="mx-auto">Customers</h2>
             </div>
             <div class="row"><div class="mt-4 mb-4 col-sm-1">
-                <a href="aggiungiCliente.jsp"><i class="fa-sharp fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></a>
+                <a href="aggiungiCustomer.jsp"><i class="fa-sharp fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></a>
             </div></div>
             <div id="tabUtenti">
                 <table class="table table-striped" id="tab">
@@ -66,6 +68,7 @@
                             <td>
                                 <form action="prenotazioneServlet" method="get">
                                     <input type="hidden" name="id" value=${utenti.idUtente}>
+                                    <input type="hidden" name="tipo" value="1">
                                     <button type="submit" class="btn"><i class="fa-regular fa-calendar fa-lg" style="color: green"></i></button>
                                 </form>
                             </td>

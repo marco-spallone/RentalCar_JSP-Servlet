@@ -24,25 +24,30 @@ public class AutoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getParameter("action").equals("modifica") || request.getParameter("action").equals("aggiungi")){
-            Auto a = new Auto();
-            if(request.getParameter("id")!=null){
-                a.setIdAuto(Integer.parseInt(request.getParameter("id")));
-            }
-            a.setMarca(request.getParameter("marca"));
-            a.setModello(request.getParameter("modello"));
-            a.setAnno(Integer.parseInt(request.getParameter("anno")));
-            a.setPrezzo(Double.valueOf(request.getParameter("prezzo")));
-            a.setTarga(request.getParameter("targa"));
-            autoDao.inserisciOAggiornaAuto(a);
-            request.setAttribute("action", "modifica_auto");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
-            dispatcher.forward(request, response);
-        } else if(request.getParameter("action").equals("elimina")){
-            autoDao.eliminaAuto(Integer.parseInt(request.getParameter("id")));
-            request.setAttribute("action", "elimina_auto");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
-            dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
+        switch (request.getParameter("action")){
+            case "modifica":
+            case "aggiungi":
+                Auto a = new Auto();
+                if(request.getParameter("id")!=null){
+                    a.setIdAuto(Integer.parseInt(request.getParameter("id")));
+                }
+                a.setMarca(request.getParameter("marca"));
+                a.setModello(request.getParameter("modello"));
+                a.setAnno(Integer.parseInt(request.getParameter("anno")));
+                a.setPrezzo(Double.valueOf(request.getParameter("prezzo")));
+                a.setTarga(request.getParameter("targa"));
+                autoDao.inserisciOAggiornaAuto(a);
+                request.setAttribute("action", "modifica_auto");
+                break;
+            case "elimina":
+                autoDao.eliminaAuto(Integer.parseInt(request.getParameter("id")));
+                request.setAttribute("action", "elimina_auto");
+                break;
+            default:
+                System.out.println("ERRORE");
+                break;
         }
+        dispatcher.forward(request, response);
     }
 }

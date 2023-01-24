@@ -33,6 +33,9 @@
       </li>
     </ul>
   </div>
+  <div class="nav navbar-nav navbar-right">
+    <a href="loginPage.jsp" class="navbar-brand"><button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Esci</button></a>
+  </div>
 </nav>
 
 <!--CONFERMA-->
@@ -81,8 +84,15 @@
               <c:when test="${tipo==0}">
                 <a href="prenotazioneServlet?id=${utente.idUtente}"><button type="button" class="btn btn-success">Vai alla home</button></a>
               </c:when>
+              <c:otherwise></c:otherwise>
             </c:choose>
           </c:when>
+          <c:when test="${action=='prenotazione_inserita'}">
+            <h2>Prenotazione inserita con successo!</h2>
+            <h3>Attendere la conferma da parte dell'amministratore</h3>
+            <a href="prenotazioneServlet?id=${id}"><button type="button" class="btn btn-success">Torna alla tua home</button></a>
+          </c:when>
+          <c:otherwise></c:otherwise>
         </c:choose>
 
 

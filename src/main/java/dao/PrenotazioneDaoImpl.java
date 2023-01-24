@@ -44,14 +44,9 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
     }
 
     @Override
-    public void inserisciPrenotazione(Date inizio, Date fine, Utente u, Auto a) {
+    public void inserisciPrenotazione(Prenotazione p) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             session.beginTransaction();
-            Prenotazione p = new Prenotazione();
-            p.setDataInizio(inizio);
-            p.setDataFine(fine);
-            p.setUtente(u);
-            p.setAuto(a);
             session.persist(p);
             session.getTransaction().commit();
             session.close();
