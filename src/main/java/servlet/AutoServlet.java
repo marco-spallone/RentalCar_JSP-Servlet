@@ -17,6 +17,8 @@ public class AutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Auto> auto = autoDao.elencoAuto();
+        request.setAttribute("id", request.getParameter("id"));
+        request.setAttribute("tipo", request.getParameter("tipo"));
         request.setAttribute("auto", auto);
         RequestDispatcher dispatcher = request.getRequestDispatcher("parcoAuto.jsp");
         dispatcher.forward(request, response);

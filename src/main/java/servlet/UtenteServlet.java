@@ -20,13 +20,7 @@ public class UtenteServlet extends HttpServlet {
     private final UtenteDao utenteDao = new UtenteDaoImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Utente> utenti = utenteDao.trovaUtenti();
-        List<Utente> customers = new ArrayList<>();
-        for (Utente u : utenti) {
-            if(!u.getTipo()){
-                customers.add(u);
-            }
-        }
+        List<Utente> customers = utenteDao.trovaCustomers();
         request.setAttribute("listaUt", customers);
         RequestDispatcher dispatcher = request.getRequestDispatcher("homeAdmin.jsp");
         dispatcher.forward(request, response);
@@ -44,6 +38,7 @@ public class UtenteServlet extends HttpServlet {
         u.setPassword(request.getParameter("pass"));
         u.setTipo(false);
         RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
+        request.setAttribute("id", request.getParameter("id"));
         switch (request.getParameter("action")){
             case "modifica":
             case "aggiungi":
@@ -59,9 +54,12 @@ public class UtenteServlet extends HttpServlet {
                 Utente utenteLoggato = new Utente();
                 boolean login = false;
                 for(Utente utente:utenti) {
-                    if(utente.getUsername().equals(request.getParameter("user")) && utente.getPassword().equals(request.getParameter("pass"))){
+                    utente = utenteDao.login(request.getParameter("user"),request.getParameter("pass"));
+                    if(utente != null){
                         login = true;
                         utenteLoggato = utente;
+                    } else {
+                        System.out.println("ERRORE!");
                     }
                 }
                 if(login){

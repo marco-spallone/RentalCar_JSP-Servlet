@@ -25,10 +25,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="prenotazioneServlet">Home</a>
+        <a class="nav-link" href="prenotazioneServlet?${id}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="autoServlet">Parco Auto</a>
+        <a class="nav-link" href="autoServlet?id=${id}">Parco Auto</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Profilo utente</a>

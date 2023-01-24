@@ -27,10 +27,17 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="utenteServlet">Home</a>
+        <c:choose>
+          <c:when test="${tipo=='1'}">
+            <a class="nav-link" href="utenteServlet">Home</a>
+          </c:when>
+          <c:otherwise>
+            <a class="nav-link" href="prenotazioneServlet?id=${id}">Home</a>
+          </c:otherwise>
+        </c:choose>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="autoServlet">Parco Auto</a>
+        <a class="nav-link" href="autoServlet?tipo=${tipo}&id=${id}">Parco Auto</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Profilo utente</a>
@@ -48,9 +55,14 @@
       <div class="col-sm-3">
         <h2 class="mx-auto">Auto</h2>
       </div>
-      <div class="row"><div class="mt-4 mb-4 col-sm-4">
-        <a href="aggiungiAuto.jsp"><i class="fa-solid fa-car fa-lg" style="color: dodgerblue"></i></a>
-      </div></div>
+      <c:choose>
+        <c:when test="${tipo=='1'}">
+          <div class="row"><div class="mt-4 mb-4 col-sm-4">
+            <a href="aggiungiAuto.jsp"><i class="fa-solid fa-car fa-lg" style="color: dodgerblue"></i></a>
+          </div></div>
+        </c:when>
+        <c:otherwise></c:otherwise>
+      </c:choose>
       <div id="tabAuto">
         <table class="table table-striped" id="tab">
           <thead>
@@ -68,20 +80,25 @@
               <td>${auto.marca}</td>
               <td>${auto.modello}</td>
               <td>${auto.anno}</td>
-              <td>${auto.prezzo}</td>
+              <td>€${auto.prezzo}</td>
               <td>${auto.targa}</td>
-              <td>
-                <a href="modificaAuto.jsp?id=${auto.idAuto}">
-                  <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
-                </a>
-              </td>
-              <td>
-                <form action="autoServlet" method="post">
-                  <input type="hidden" name="action" value="elimina">
-                  <input type="hidden" name="id" value="${auto.idAuto}">
-                  <button type="submit" class="btn"><i class="fa-solid fa-trash fa-lg" style="color: red"></i></button>
-                </form>
-              </td>
+              <c:choose>
+                <c:when test="${tipo=='1'}">
+                  <td>
+                    <a href="modificaAuto.jsp?id=${auto.idAuto}&tipo=1">
+                      <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
+                    </a>
+                  </td>
+                  <td>
+                    <form action="autoServlet?tipo=1" method="post">
+                      <input type="hidden" name="action" value="elimina">
+                      <input type="hidden" name="id" value="${auto.idAuto}">
+                      <button type="submit" class="btn"><i class="fa-solid fa-trash fa-lg" style="color: red"></i></button>
+                    </form>
+                  </td>
+                </c:when>
+                <c:otherwise></c:otherwise>
+              </c:choose>
             </tr>
           </c:forEach>
           </tbody>

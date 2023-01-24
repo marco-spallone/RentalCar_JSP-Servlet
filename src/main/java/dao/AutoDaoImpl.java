@@ -36,7 +36,6 @@ public class AutoDaoImpl implements AutoDao{
             session.beginTransaction();
             session.saveOrUpdate(a);
             session.getTransaction().commit();
-            session.close();
         } catch(Exception e){
             System.out.println(e);
         }

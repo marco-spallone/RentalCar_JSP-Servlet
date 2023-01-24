@@ -49,7 +49,6 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
             session.beginTransaction();
             session.persist(p);
             session.getTransaction().commit();
-            session.close();
         } catch(Exception e){
             System.out.println(e);
         }

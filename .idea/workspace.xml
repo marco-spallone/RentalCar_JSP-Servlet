@@ -9,20 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="Creazione del parco auto e implementazione di tutte le sue operazioni CRUD.">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiPrenotazione.jsp" afterDir="false" />
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Implementazione parco auto per customers.&#10;-Correzione bug.&#10;-Possibilità di modifica delle prenotazioni.&#10;-Correzioni nei redirect di alcune pagine.&#10;-Ottimizzazione codice su consigli di Fabio.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/AutoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/AutoServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiAuto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiPrenotazione.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiPrenotazione.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/feedback.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/feedback.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/homeCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/homeCustomer.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaAuto.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" afterDir="false" />
@@ -267,7 +268,8 @@
       <workItem from="1674149233858" duration="2000" />
       <workItem from="1674201960262" duration="31075000" />
       <workItem from="1674460990933" duration="30043000" />
-      <workItem from="1674547417245" duration="11307000" />
+      <workItem from="1674547417245" duration="12096000" />
+      <workItem from="1674566906117" duration="12518000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -353,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674492676485</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="-Implementazione della funzione che permette ai customer di aggiungere una nuova prenotazione.&#10;-Sistemata la navigazione e alcuni bug.&#10;-Sostituiti gli if-then-else con switch in tutti i servlet.&#10;-Ottimizzazione del codice.&#10;-Implementazione della funzione di logout nella navbar di tutte le pagine.">
+      <created>1674559258062</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1674559258062</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,6 +391,8 @@
     <MESSAGE value="Aggiunta di pagina login e dei relativi campi username e password nell'entità Utente." />
     <MESSAGE value="Correzione e ottimizzazione secondo indicazioni di Fabio. Implementazione login e routing tra le vare pagine in base al tipo di utente." />
     <MESSAGE value="Creazione del parco auto e implementazione di tutte le sue operazioni CRUD." />
-    <option name="LAST_COMMIT_MESSAGE" value="Creazione del parco auto e implementazione di tutte le sue operazioni CRUD." />
+    <MESSAGE value="-Implementazione della funzione che permette ai customer di aggiungere una nuova prenotazione.&#10;-Sistemata la navigazione e alcuni bug.&#10;-Sostituiti gli if-then-else con switch in tutti i servlet.&#10;-Ottimizzazione del codice.&#10;-Implementazione della funzione di logout nella navbar di tutte le pagine." />
+    <MESSAGE value="-Implementazione parco auto per customers.&#10;-Correzione bug.&#10;-Possibilità di modifica delle prenotazioni.&#10;-Correzioni nei redirect di alcune pagine.&#10;-Ottimizzazione codice su consigli di Fabio." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Implementazione parco auto per customers.&#10;-Correzione bug.&#10;-Possibilità di modifica delle prenotazioni.&#10;-Correzioni nei redirect di alcune pagine.&#10;-Ottimizzazione codice su consigli di Fabio." />
   </component>
 </project>

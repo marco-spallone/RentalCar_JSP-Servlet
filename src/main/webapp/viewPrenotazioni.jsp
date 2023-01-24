@@ -2,8 +2,17 @@
 <%@ page import="java.util.List" %>
 <%@ page import="dao.UtenteDaoImpl" %>
 <%@ page import="entities.Utente" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.time.LocalDateTime" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%!
+    private Object Date;
+%>
+<jsp:useBean id="now" class="java.util.Date"/>
+
 <html>
 <head>
     <title>Prenotazioni</title>
@@ -33,7 +42,7 @@
                 </c:choose>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Parco Auto</a>
+                <a class="nav-link" href="autoServlet?tipo=${tipo}&id=${id}">Parco Auto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Profilo utente</a>
@@ -51,11 +60,16 @@
         <div class="mx-auto mt-5 col-sm-8">
             <h3>Prenotazioni effettuate</h3>
             <div class="row"><div class="mt-4 mb-4 col-sm-1">
-                <form action="prenotazioneServlet" method="post">
-                    <input type="hidden" name="action" value="aggiunta_prenotazione">
-                    <input type="hidden" name="id" value="${id}">
-                    <button type="submit" class="btn"><i class="fa-regular fa-calendar-plus fa-lg" style="color: dodgerblue"></i></button>
-                </form>
+                <c:choose>
+                    <c:when test="${tipo=='1'}"></c:when>
+                    <c:otherwise>
+                        <form action="prenotazioneServlet" method="post">
+                            <input type="hidden" name="action" value="aggiunta_prenotazione">
+                            <input type="hidden" name="id" value="${id}">
+                            <button type="submit" class="btn"><i class="fa-regular fa-calendar-plus fa-lg" style="color: dodgerblue"></i></button>
+                        </form>
+                    </c:otherwise>
+                </c:choose>
             </div></div>
             <div id="tabPrenotazioni">
                 <table class="table table-striped" id="tab">
@@ -69,37 +83,74 @@
                     </thead>
                     <tbody>
                     <c:forEach var="prenotazioni" items="${prenotazioni}">
+                        <fmt:parseNumber var="giorni" value="${( prenotazioni.dataInizio.time - now.time ) / (1000*60*60*24) }"
+                                         integerOnly="true" scope="page"/>
                         <tr>
                             <td>${prenotazioni.dataInizio}</td>
                             <td>${prenotazioni.dataFine}</td>
                             <td>${prenotazioni.auto.marca} ${prenotazioni.auto.modello}</td>
                             <td><c:choose>
-                                <c:when test="${prenotazioni.confermata==true}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-                                    </svg>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:choose>
-                                        <c:when test="${tipo=='1'}">
-                                            Da confermare <br>
-                                            <form action="prenotazioneServlet" method="post">
-                                                <input type="hidden" name="id" value=${prenotazioni.idPrenotazione} />
-                                                <input type="hidden" name="action" value="conferma">
-                                                <button type="submit"><svg style="color: green" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                                </svg></button></form>
-                                            <form action="prenotazioneServlet" method="post">
-                                                <input type="hidden" name="id" value=${prenotazioni.idPrenotazione} />
-                                                <input type="hidden" name="action" value="rifiuta">
-                                                <button type="submit"><svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                                                </svg></button></form>
-                                        </c:when>
-                                        <c:otherwise>
-                                            Da confermare
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <c:when test="${prenotazioni.confermata==true}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                        </svg>
+                                        <c:choose>
+                                            <c:when test="${giorni>=12784630787037037}">
+                                                </td>
+                                                <td>
+                                                    <a href="modificaPrenotazione.jsp?id=${prenotazioni.idPrenotazione}">
+                                                    <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
+                                                    ${giorni}</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td>Prenotazione non modificabile, mancano 2 giorni o meno alla data di inizio ${giorni}</td>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:choose>
+                                            <c:when test="${tipo=='1'}">
+                                                <strong>Da confermare:</strong> <br>
+                                                <form action="prenotazioneServlet" method="post">
+                                                    <input type="hidden" name="id" value=${prenotazioni.idPrenotazione} />
+                                                    <input type="hidden" name="action" value="conferma">
+                                                    <button type="submit" class="mt-2 btn btn-outline-success"><i class="fa-solid fa-check" style="color: green">
+                                                    </i> Accetta</button>
+                                                </form>
+                                                <form action="prenotazioneServlet" method="post">
+                                                    <input type="hidden" name="id" value=${prenotazioni.idPrenotazione} />
+                                                    <input type="hidden" name="action" value="rifiuta">
+                                                    <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-x" style="color: red">
+                                                    </i> Rifiuta</button>
+                                                </form>
+                                                <c:choose>
+                                                    <c:when test="${giorni>=12784630787037037}">
+                                                        </td>
+                                                        <td>
+                                                        <a href="modificaPrenotazione.jsp?id=${prenotazioni.idPrenotazione}">
+                                                            <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
+                                                                ${giorni}</a>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <td>Prenotazione non modificabile, mancano 2 giorni o meno alla data di inizio ${giorni}</td>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:choose>
+                                                    <c:when test="${giorni>=12784630787037037}">
+                                                        </td>
+                                                        <td>
+                                                            <a href="modificaPrenotazione.jsp?id=${prenotazioni.idPrenotazione}">
+                                                                <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
+                                                                    ${giorni}</a>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <td>Prenotazione non modificabile, mancano 2 giorni o meno alla data di inizio ${giorni}</td>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:otherwise>
+                                        </c:choose>
                                 </c:otherwise>
                             </c:choose></td>
                         </tr>
