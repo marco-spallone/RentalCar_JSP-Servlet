@@ -101,6 +101,17 @@ public class UtenteServlet extends HttpServlet {
                     request.setAttribute("action", "login_failed");
                 }
                 break;
+            case "filtra":
+                String campo = request.getParameter("filtraper");
+                String valore = new String();
+                if(request.getParameter("filtra")!=null){
+                    valore = request.getParameter("filtra");
+                }
+                List<Utente> filtrata = utenteDao.filtra(campo, valore);
+                request.setAttribute("listaUt", filtrata);
+                request.setAttribute("action", "home");
+                dispatcher = request.getRequestDispatcher("homeAdmin.jsp");
+                break;
             default:
                 request.setAttribute("action", "errore");
                 break;

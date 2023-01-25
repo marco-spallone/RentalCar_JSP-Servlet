@@ -86,7 +86,7 @@
                 <c:when test="${tipo=='1'}">
                   <td>
                     <a href="autoServlet?id=${id}&action=modifica&idAuto=${auto.idAuto}">
-                      <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
+                      <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: #f0ad4e"></i></button>
                     </a>
                   </td>
                   <td>

@@ -47,6 +47,21 @@
             <div class="row"><div class="mt-4 mb-4 col-sm-1">
                 <a href="utenteServlet?action=aggiungi&id=${id}"><i class="fa-sharp fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></a>
             </div></div>
+            <div class="row"><div class="mt-2 mb-2">
+                <form action="utenteServlet" method="post">
+                    <input type="hidden" name="action" value="filtra" />
+                    <input type="hidden" name="id" value="${id}" />
+                    <div class="mb-3">
+                        <select class="form-select" id="filtraper" name="filtraper">
+                            <option value="nome" selected>Nome</option>
+                            <option value="cognome">Cognome</option>
+                        </select>
+                    </div><div class="mb-3">
+                        <input class="form-control" type="text" name="filtra" id="filtra" placeholder="Filtra..."/>
+                    </div>
+                    <button class="btn btn-warning" type="submit">Filtra</button>
+                </form><a href="utenteServlet?id=${id}&action=home"><button class="btn btn-danger" type="submit">Annulla</button></a>
+            </div></div>
             <div id="tabUtenti">
                 <table class="table table-striped" id="tab">
                     <thead>
@@ -62,7 +77,7 @@
                             <td>${utenti.cognome}</td>
                             <td>
                                 <a href="utenteServlet?id=${id}&action=modifica&customer=${utenti.idUtente}">
-                                    <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
+                                    <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: #f0ad4e"></i></button>
                                 </a>
                             </td>
                             <td>

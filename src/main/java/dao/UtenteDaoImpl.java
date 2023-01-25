@@ -21,7 +21,7 @@ public class UtenteDaoImpl implements UtenteDao {
     @Override
     public List<Utente> trovaCustomers() {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            return session.createQuery("SELECT a FROM Utente a WHERE a.tipo=0", Utente.class).list();
+            return session.createQuery("SELECT a FROM Utente a WHERE a.tipo=false", Utente.class).list();
         } catch (Exception e){
             System.out.println(e);
         }
@@ -34,6 +34,30 @@ public class UtenteDaoImpl implements UtenteDao {
             return session.createQuery("SELECT a FROM Utente a WHERE a.id = :id", Utente.class).setParameter("id", id).getSingleResult();
         } catch(Exception e){
             System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Utente> filtra(String campo, String valore) {
+        switch (campo){
+            case "nome":
+                try(Session session=HibernateUtil.getSessionFactory().openSession()){
+                    return session.createQuery("SELECT a FROM Utente a WHERE a.nome=:valore", Utente.class).setParameter("valore", valore).list();
+                } catch (Exception e){
+                    System.out.println(e);
+                }
+                break;
+            case "cognome":
+                try(Session session=HibernateUtil.getSessionFactory().openSession()){
+                    return session.createQuery("SELECT a FROM Utente a WHERE a.cognome=:valore", Utente.class).setParameter("valore", valore).list();
+                } catch (Exception e){
+                    System.out.println(e);
+                }
+                break;
+            default:
+                System.out.println("Error");
+                break;
         }
         return null;
     }
