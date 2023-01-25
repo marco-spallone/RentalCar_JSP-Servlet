@@ -34,18 +34,18 @@
             <li class="nav-item active">
                 <c:choose>
                     <c:when test="${tipo=='1'}">
-                        <a class="nav-link" href="utenteServlet">Home</a>
+                        <a class="nav-link" href="utenteServlet?id=${myid}&action=home">Home</a>
                     </c:when>
                     <c:otherwise>
-                        <a class="nav-link" href="prenotazioneServlet?id=${id}">Home</a>
+                        <a class="nav-link" href="prenotazioneServlet?id=${myid}">Home</a>
                     </c:otherwise>
                 </c:choose>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="autoServlet?tipo=${tipo}&id=${id}">Parco Auto</a>
+                <a class="nav-link" href="autoServlet?tipo=${tipo}&id=${myid}&action=home">Parco Auto</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Profilo utente</a>
+                <a class="nav-link" href="utenteServlet?action=profilo&tipo=${tipo}&id=${myid}">Profilo utente</a>
             </li>
         </ul>
     </div>
@@ -65,7 +65,7 @@
                     <c:otherwise>
                         <form action="prenotazioneServlet" method="post">
                             <input type="hidden" name="action" value="aggiunta_prenotazione">
-                            <input type="hidden" name="id" value="${id}">
+                            <input type="hidden" name="id" value="${myid}">
                             <button type="submit" class="btn"><i class="fa-regular fa-calendar-plus fa-lg" style="color: dodgerblue"></i></button>
                         </form>
                     </c:otherwise>
@@ -95,15 +95,33 @@
                                             <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
                                         </svg>
                                         <c:choose>
-                                            <c:when test="${giorni>=12784630787037037}">
-                                                </td>
-                                                <td>
-                                                    <a href="modificaPrenotazione.jsp?id=${prenotazioni.idPrenotazione}">
-                                                    <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
-                                                    ${giorni}</a>
-                                            </c:when>
+                                            <c:when test="${tipo==1}"></c:when>
                                             <c:otherwise>
-                                                <td>Prenotazione non modificabile, mancano 2 giorni o meno alla data di inizio ${giorni}</td>
+                                                <c:choose>
+                                                    <c:when test="${giorni>=2}">
+                                                        </td>
+                                                        <td>
+                                                            <form action="prenotazioneServlet" method="post">
+                                                                <input type="hidden" name="action" value="modifica_prenotazione">
+                                                                <input type="hidden" name="id" value="${myid}">
+                                                                <input type="hidden" name="idPren" value="${prenotazioni.idPrenotazione}">
+                                                                <button type="submit" class="btn btn-outline-success">
+                                                                <i class="fa-solid fa-pencil fa-lg" style="color: green"></i>Modifica</button>
+                                                            </form>
+                                                        </td><td>
+                                                            <form action="prenotazioneServlet" method="post">
+                                                                <input type="hidden" name="action" value="elimina_prenotazione">
+                                                                <input type="hidden" name="id" value="${myid}">
+                                                                <input type="hidden" name="idPren" value="${prenotazioni.idPrenotazione}">
+                                                                <button type="submit" class="btn btn-outline-danger">
+                                                                    <i class="fa-solid fa-trash fa-lg" style="color: red"></i>
+                                                                    Elimina</button>
+                                                            </form>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <td>Prenotazione non modificabile, mancano 2 giorni o meno alla data di inizio</td><td></td>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </c:otherwise>
                                         </c:choose>
                                     </c:when>
@@ -124,29 +142,62 @@
                                                     </i> Rifiuta</button>
                                                 </form>
                                                 <c:choose>
-                                                    <c:when test="${giorni>=12784630787037037}">
-                                                        </td>
-                                                        <td>
-                                                        <a href="modificaPrenotazione.jsp?id=${prenotazioni.idPrenotazione}">
-                                                            <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
-                                                                ${giorni}</a>
-                                                    </c:when>
+                                                    <c:when test="${tipo=='1'}"></c:when>
                                                     <c:otherwise>
-                                                        <td>Prenotazione non modificabile, mancano 2 giorni o meno alla data di inizio ${giorni}</td>
+                                                        <c:when test="${giorni>=2}">
+                                                            </td>
+                                                            <td>
+                                                                <form action="prenotazioneServlet" method="post">
+                                                                    <input type="hidden" name="action" value="modifica_prenotazione">
+                                                                    <input type="hidden" name="id" value="${myid}">
+                                                                    <input type="hidden" name="tipo" value="${tipo}">
+                                                                    <input type="hidden" name="idPren" value=${prenotazioni.idPrenotazione} />
+                                                                    <button type="submit" class="btn btn-outline-success">
+                                                                        <i class="fa-solid fa-pencil fa-lg" style="color: green"></i>Modifica</button>
+                                                                </form>
+                                                            </td><td>
+                                                            <form action="prenotazioneServlet" method="post">
+                                                                <input type="hidden" name="action" value="elimina_prenotazione">
+                                                                <input type="hidden" name="id" value="${myid}">
+                                                                <input type="hidden" name="tipo" value="${tipo}">
+                                                                <input type="hidden" name="idPren" value="${prenotazioni.idPrenotazione}">
+                                                                <button type="submit" class="btn btn-outline-danger">
+                                                                    <i class="fa-solid fa-trash fa-lg" style="color: red"></i>
+                                                                    Elimina</button>
+                                                            </form>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <td>Prenotazione non modificabile, mancano 2 giorni o meno alla data di inizio</td><td></td>
+                                                        </c:otherwise>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:when>
                                             <c:otherwise>
                                                 <c:choose>
-                                                    <c:when test="${giorni>=12784630787037037}">
+                                                    <c:when test="${giorni>=2}">
                                                         </td>
                                                         <td>
-                                                            <a href="modificaPrenotazione.jsp?id=${prenotazioni.idPrenotazione}">
-                                                                <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
-                                                                    ${giorni}</a>
+                                                        <form action="prenotazioneServlet" method="post">
+                                                            <input type="hidden" name="action" value="modifica_prenotazione">
+                                                            <input type="hidden" name="id" value="${myid}">
+                                                            <input type="hidden" name="tipo" value="${tipo}">
+                                                            <input type="hidden" name="idPren" value="${prenotazioni.idPrenotazione}">
+                                                            <button type="submit" class="btn btn-outline-success">
+                                                                <i class="fa-solid fa-pencil fa-lg" style="color: green"></i>Modifica</button>
+                                                        </form>
+                                                        </td><td>
+                                                        <form action="prenotazioneServlet" method="post">
+                                                            <input type="hidden" name="action" value="elimina_prenotazione">
+                                                            <input type="hidden" name="id" value="${myid}">
+                                                            <input type="hidden" name="tipo" value="${tipo}">
+                                                            <input type="hidden" name="idPren" value="${prenotazioni.idPrenotazione}">
+                                                            <button type="submit" class="btn btn-outline-danger">
+                                                                <i class="fa-solid fa-trash fa-lg" style="color: red"></i>
+                                                                Elimina</button>
+                                                        </form>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <td>Prenotazione non modificabile, mancano 2 giorni o meno alla data di inizio ${giorni}</td>
+                                                        <td>Prenotazione non modificabile, mancano 2 giorni o meno alla data di inizio</td><td></td>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:otherwise>

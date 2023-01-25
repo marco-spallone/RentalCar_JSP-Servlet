@@ -47,7 +47,7 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
     public void inserisciPrenotazione(Prenotazione p) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             session.beginTransaction();
-            session.persist(p);
+            session.saveOrUpdate(p);
             session.getTransaction().commit();
         } catch(Exception e){
             System.out.println(e);

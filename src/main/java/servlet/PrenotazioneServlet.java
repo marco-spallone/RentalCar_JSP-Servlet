@@ -32,6 +32,11 @@ public class PrenotazioneServlet extends HttpServlet {
         }   else {
             request.setAttribute("tipo", "1");
         }
+        if(request.getParameter("myid")!=null){
+            request.setAttribute("myid", request.getParameter("myid"));
+        } else {
+            request.setAttribute("myid", request.getParameter("id"));
+        }
         request.setAttribute("id", id);
         request.setAttribute("prenotazioni", prenotazioni);
         request.setAttribute("auto", auto);
@@ -44,6 +49,7 @@ public class PrenotazioneServlet extends HttpServlet {
         int id=Integer.parseInt(request.getParameter("id"));
         String inizio = request.getParameter("inizio");
         String fine = request.getParameter("fine");
+        RequestDispatcher dispatcher;
         switch (request.getParameter("action")){
             case "conferma":
                 prenotazioneDao.aggiornaStatoPrenotazione(id, true);
@@ -56,6 +62,9 @@ public class PrenotazioneServlet extends HttpServlet {
             case "aggiungi":
                 Prenotazione p = new Prenotazione();
                 p.setUtente(utenteDao.trovaUtenteDaId(id));
+                if(request.getParameter("idPren")!=null){
+                    p.setIdPrenotazione(Integer.parseInt(request.getParameter("idPren")));
+                }
                 try {
                     Date dataInizio = new SimpleDateFormat("yyyy-MM-dd").parse(inizio);
                     Date dataFine = new SimpleDateFormat("yyyy-MM-dd").parse(fine);
@@ -70,17 +79,52 @@ public class PrenotazioneServlet extends HttpServlet {
                 request.setAttribute("action", "prenotazione_inserita");
                 request.setAttribute("id", id);
                 break;
+            case "modifica":
+                Prenotazione pren = new Prenotazione();
+                pren.setUtente(utenteDao.trovaUtenteDaId(id));
+                if(request.getParameter("idPren")!=null){
+                    pren.setIdPrenotazione(Integer.parseInt(request.getParameter("idPren")));
+                }
+                try {
+                    Date dataInizio = new SimpleDateFormat("yyyy-MM-dd").parse(inizio);
+                    Date dataFine = new SimpleDateFormat("yyyy-MM-dd").parse(fine);
+                    pren.setDataInizio(dataInizio);
+                    pren.setDataFine(dataFine);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                pren.setConfermata(false);
+                pren.setAuto(autoDao.trovaAutoDaTarga(request.getParameter("auto")));
+                prenotazioneDao.inserisciPrenotazione(pren);
+                request.setAttribute("action", "prenotazione_modificata");
+                request.setAttribute("id", id);
+                request.setAttribute("tipo", request.getParameter("tipo"));
+                break;
             case "aggiunta_prenotazione":
                 request.setAttribute("id", request.getParameter("id"));
                 request.setAttribute("auto", autoDao.elencoAuto());
-                RequestDispatcher dispatcher = request.getRequestDispatcher("aggiungiPrenotazione.jsp");
+                dispatcher = request.getRequestDispatcher("aggiungiPrenotazione.jsp");
                 dispatcher.forward(request, response);
                 break;
+            case "modifica_prenotazione":
+                request.setAttribute("id", request.getParameter("id"));
+                request.setAttribute("idPren", request.getParameter("idPren"));
+                request.setAttribute("auto", autoDao.elencoAuto());
+                request.setAttribute("tipo", request.getParameter("tipo"));
+                dispatcher = request.getRequestDispatcher("modificaPrenotazione.jsp");
+                dispatcher.forward(request, response);
+                break;
+            case "elimina_prenotazione":
+                prenotazioneDao.eliminaPrenotazione(Integer.parseInt(request.getParameter("idPren")));
+                request.setAttribute("action", "pren_eliminata");
+                request.setAttribute("tipo", request.getParameter("tipo"));
+                request.setAttribute("id", request.getParameter("id"));
+                break;
             default:
-                System.out.println("ERRORE");
+                request.setAttribute("action", "errore");
                 break;
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
+        dispatcher = request.getRequestDispatcher("feedback.jsp");
         dispatcher.forward(request, response);
     }
 }

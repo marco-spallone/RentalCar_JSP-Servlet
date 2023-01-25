@@ -20,9 +20,33 @@ public class UtenteServlet extends HttpServlet {
     private final UtenteDao utenteDao = new UtenteDaoImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Utente> customers = utenteDao.trovaCustomers();
-        request.setAttribute("listaUt", customers);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("homeAdmin.jsp");
+        RequestDispatcher dispatcher;
+        switch(request.getParameter("action")){
+            case "home":
+                List<Utente> customers = utenteDao.trovaCustomers();
+                request.setAttribute("id", request.getParameter("id"));
+                request.setAttribute("listaUt", customers);
+                dispatcher = request.getRequestDispatcher("homeAdmin.jsp");
+                break;
+            case "profilo":
+                request.setAttribute("id", request.getParameter("id"));
+                request.setAttribute("tipo", request.getParameter("tipo"));
+                dispatcher = request.getRequestDispatcher("profiloUtente.jsp");
+                break;
+            case "modifica":
+                request.setAttribute("id", request.getParameter("id"));
+                request.setAttribute("customer", request.getParameter("customer"));
+                dispatcher = request.getRequestDispatcher("modificaCustomer.jsp");
+                break;
+            case "aggiungi":
+                request.setAttribute("id", request.getParameter("id"));
+                dispatcher = request.getRequestDispatcher("aggiungiCustomer.jsp");
+                break;
+            default:
+                request.setAttribute("action", "errore");
+                dispatcher = request.getRequestDispatcher("feedback.jsp");
+                break;
+        }
         dispatcher.forward(request, response);
     }
 
@@ -31,18 +55,21 @@ public class UtenteServlet extends HttpServlet {
         Utente u = new Utente();
         if(request.getParameter("id")!=null){
             u.setIdUtente(Integer.parseInt(request.getParameter("id")));
-        }
+            u.setTipo(utenteDao.trovaUtenteDaId(Integer.parseInt(request.getParameter("id"))).getTipo());
+        } else u.setTipo(false);
         u.setNome(request.getParameter("nome"));
         u.setCognome(request.getParameter("cognome"));
         u.setUsername(request.getParameter("user"));
         u.setPassword(request.getParameter("pass"));
-        u.setTipo(false);
         RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
         request.setAttribute("id", request.getParameter("id"));
         switch (request.getParameter("action")){
             case "modifica":
             case "aggiungi":
                 utenteDao.inserisciOAggiornaUtente(u);
+                if(request.getParameter("tipo")!=null){
+                    request.setAttribute("richiestada", request.getParameter("tipo"));
+                }
                 request.setAttribute("action", "modifica_utente");
                 break;
             case "elimina":
@@ -75,7 +102,7 @@ public class UtenteServlet extends HttpServlet {
                 }
                 break;
             default:
-                System.out.println("ERRORE");
+                request.setAttribute("action", "errore");
                 break;
         }
         dispatcher.forward(request, response);

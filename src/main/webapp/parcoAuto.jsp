@@ -29,7 +29,7 @@
       <li class="nav-item active">
         <c:choose>
           <c:when test="${tipo=='1'}">
-            <a class="nav-link" href="utenteServlet">Home</a>
+            <a class="nav-link" href="utenteServlet?id=${id}&action=home">Home</a>
           </c:when>
           <c:otherwise>
             <a class="nav-link" href="prenotazioneServlet?id=${id}">Home</a>
@@ -37,10 +37,10 @@
         </c:choose>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="autoServlet?tipo=${tipo}&id=${id}">Parco Auto</a>
+        <a class="nav-link" href="autoServlet?tipo=${tipo}&id=${id}&action=home">Parco Auto</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profilo utente</a>
+        <a class="nav-link" href="utenteServlet?action=profilo&tipo=${tipo}&id=${id}">Profilo utente</a>
       </li>
     </ul>
   </div>
@@ -58,7 +58,7 @@
       <c:choose>
         <c:when test="${tipo=='1'}">
           <div class="row"><div class="mt-4 mb-4 col-sm-4">
-            <a href="aggiungiAuto.jsp"><i class="fa-solid fa-car fa-lg" style="color: dodgerblue"></i></a>
+            <a href="autoServlet?id=${id}&action=aggiungi"><i class="fa-solid fa-car fa-lg" style="color: dodgerblue"></i></a>
           </div></div>
         </c:when>
         <c:otherwise></c:otherwise>
@@ -85,14 +85,15 @@
               <c:choose>
                 <c:when test="${tipo=='1'}">
                   <td>
-                    <a href="modificaAuto.jsp?id=${auto.idAuto}&tipo=1">
+                    <a href="autoServlet?id=${id}&action=modifica&idAuto=${auto.idAuto}">
                       <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
                     </a>
                   </td>
                   <td>
                     <form action="autoServlet?tipo=1" method="post">
                       <input type="hidden" name="action" value="elimina">
-                      <input type="hidden" name="id" value="${auto.idAuto}">
+                      <input type="hidden" name="idAuto" value="${auto.idAuto}">
+                      <input type="hidden" name="id" value="${id}">
                       <button type="submit" class="btn"><i class="fa-solid fa-trash fa-lg" style="color: red"></i></button>
                     </form>
                   </td>

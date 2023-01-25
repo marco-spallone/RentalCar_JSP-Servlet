@@ -25,13 +25,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="prenotazioneServlet?${id}">Home</a>
+        <a class="nav-link" href="prenotazioneServlet?id=${id}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="autoServlet?id=${id}">Parco Auto</a>
+        <a class="nav-link" href="autoServlet?id=${id}&tipo=0&action=home">Parco Auto</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profilo utente</a>
+        <a class="nav-link" href="utenteServlet?action=profilo&id=${id}">Profilo utente</a>
       </li>
     </ul>
   </div>

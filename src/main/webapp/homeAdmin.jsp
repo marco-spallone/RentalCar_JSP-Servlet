@@ -22,13 +22,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="utenteServlet">Home</a>
+                <a class="nav-link" href="utenteServlet?id=${id}&action=home">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="autoServlet?tipo=1">Parco Auto</a>
+                <a class="nav-link" href="autoServlet?tipo=1&id=${id}&action=home">Parco Auto</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Profilo utente</a>
+                <a class="nav-link" href="utenteServlet?action=profilo&tipo=1&id=${id}">Profilo utente</a>
             </li>
         </ul>
     </div>
@@ -45,7 +45,7 @@
                 <h2 class="mx-auto">Customers</h2>
             </div>
             <div class="row"><div class="mt-4 mb-4 col-sm-1">
-                <a href="aggiungiCustomer.jsp"><i class="fa-sharp fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></a>
+                <a href="utenteServlet?action=aggiungi&id=${id}"><i class="fa-sharp fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></a>
             </div></div>
             <div id="tabUtenti">
                 <table class="table table-striped" id="tab">
@@ -61,14 +61,15 @@
                             <td>${utenti.nome}</td>
                             <td>${utenti.cognome}</td>
                             <td>
-                                <a href="modificaCustomer.jsp?id=${utenti.idUtente}">
+                                <a href="utenteServlet?id=${id}&action=modifica&customer=${utenti.idUtente}">
                                     <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: green"></i></button>
                                 </a>
                             </td>
                             <td>
                                 <form action="prenotazioneServlet" method="get">
-                                    <input type="hidden" name="id" value=${utenti.idUtente}>
+                                    <input type="hidden" name="id" value="${utenti.idUtente}">
                                     <input type="hidden" name="tipo" value="1">
+                                    <input type="hidden" name="myid" value="${id}">
                                     <button type="submit" class="btn"><i class="fa-regular fa-calendar fa-lg" style="color: green"></i></button>
                                 </form>
                             </td>
