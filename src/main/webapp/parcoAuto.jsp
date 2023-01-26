@@ -28,7 +28,7 @@
     <ul class="navbar-nav">
       <li class="nav-item active">
         <c:choose>
-          <c:when test="${tipo=='1'}">
+          <c:when test="${isAdmin=='1'}">
             <a class="nav-link" href="utenteServlet?id=${id}&action=home">Home</a>
           </c:when>
           <c:otherwise>
@@ -37,10 +37,10 @@
         </c:choose>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="autoServlet?tipo=${tipo}&id=${id}&action=home">Parco Auto</a>
+        <a class="nav-link" href="autoServlet?isAdmin=${isAdmin}&id=${id}&action=home">Parco Auto</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="utenteServlet?action=profilo&tipo=${tipo}&id=${id}">Profilo utente</a>
+        <a class="nav-link" href="utenteServlet?action=profilo&isAdmin=${isAdmin}&id=${id}">Profilo utente</a>
       </li>
     </ul>
   </div>
@@ -56,7 +56,7 @@
         <h2 class="mx-auto">Auto</h2>
       </div>
       <c:choose>
-        <c:when test="${tipo=='1'}">
+        <c:when test="${isAdmin=='1'}">
           <div class="row"><div class="mt-4 mb-4 col-sm-4">
             <a href="autoServlet?id=${id}&action=aggiungi"><i class="fa-solid fa-car fa-lg" style="color: dodgerblue"></i></a>
           </div></div>
@@ -83,14 +83,14 @@
               <td>€${auto.prezzo}</td>
               <td>${auto.targa}</td>
               <c:choose>
-                <c:when test="${tipo=='1'}">
+                <c:when test="${isAdmin=='1'}">
                   <td>
                     <a href="autoServlet?id=${id}&action=modifica&idAuto=${auto.idAuto}">
                       <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: #f0ad4e"></i></button>
                     </a>
                   </td>
                   <td>
-                    <form action="autoServlet?tipo=1" method="post">
+                    <form action="autoServlet?isAdmin=1" method="post">
                       <input type="hidden" name="action" value="elimina">
                       <input type="hidden" name="idAuto" value="${auto.idAuto}">
                       <input type="hidden" name="id" value="${id}">

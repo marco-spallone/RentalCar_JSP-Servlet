@@ -28,7 +28,7 @@
         <a class="nav-link" href="prenotazioneServlet?id=${id}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="autoServlet?id=${id}&tipo=0&action=home">Parco Auto</a>
+        <a class="nav-link" href="autoServlet?id=${id}&isAdmin=0&action=home">Parco Auto</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="utenteServlet?action=profilo&id=${id}">Profilo utente</a>

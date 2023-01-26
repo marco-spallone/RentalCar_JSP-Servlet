@@ -8,11 +8,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 import static javax.swing.JOptionPane.showMessageDialog;
-import javax.swing.JOptionPane;
 
 
 @WebServlet(name = "utenteServlet", value = "/utenteServlet")
@@ -23,14 +21,14 @@ public class UtenteServlet extends HttpServlet {
         RequestDispatcher dispatcher;
         switch(request.getParameter("action")){
             case "home":
-                List<Utente> customers = utenteDao.trovaCustomers();
+                List<Utente> customers = utenteDao.filtra("isAdmin", "0");
                 request.setAttribute("id", request.getParameter("id"));
                 request.setAttribute("listaUt", customers);
                 dispatcher = request.getRequestDispatcher("homeAdmin.jsp");
                 break;
             case "profilo":
                 request.setAttribute("id", request.getParameter("id"));
-                request.setAttribute("tipo", request.getParameter("tipo"));
+                request.setAttribute("isAdmin", request.getParameter("isAdmin"));
                 dispatcher = request.getRequestDispatcher("profiloUtente.jsp");
                 break;
             case "modifica":
@@ -55,8 +53,8 @@ public class UtenteServlet extends HttpServlet {
         Utente u = new Utente();
         if(request.getParameter("id")!=null){
             u.setIdUtente(Integer.parseInt(request.getParameter("id")));
-            u.setTipo(utenteDao.trovaUtenteDaId(Integer.parseInt(request.getParameter("id"))).getTipo());
-        } else u.setTipo(false);
+            u.setIsAdmin(utenteDao.trovaUtenteDaId(Integer.parseInt(request.getParameter("id"))).getIsAdmin());
+        } else u.setIsAdmin(false);
         u.setNome(request.getParameter("nome"));
         u.setCognome(request.getParameter("cognome"));
         u.setUsername(request.getParameter("user"));
@@ -67,8 +65,8 @@ public class UtenteServlet extends HttpServlet {
             case "modifica":
             case "aggiungi":
                 utenteDao.inserisciOAggiornaUtente(u);
-                if(request.getParameter("tipo")!=null){
-                    request.setAttribute("richiestada", request.getParameter("tipo"));
+                if(request.getParameter("isAdmin")!=null){
+                    request.setAttribute("richiestada", request.getParameter("isAdmin"));
                 }
                 request.setAttribute("action", "modifica_utente");
                 break;
@@ -92,10 +90,10 @@ public class UtenteServlet extends HttpServlet {
                 if(login){
                     request.setAttribute("utente", utenteLoggato);
                     request.setAttribute("action", "redirect");
-                    if(utenteLoggato.getTipo()){
-                        request.setAttribute("tipo", 1);
+                    if(utenteLoggato.getIsAdmin()){
+                        request.setAttribute("isAdmin", 1);
                     } else {
-                        request.setAttribute("tipo", 0);
+                        request.setAttribute("isAdmin", 0);
                     }
                 } else {
                     request.setAttribute("action", "login_failed");

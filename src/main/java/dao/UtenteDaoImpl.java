@@ -19,16 +19,6 @@ public class UtenteDaoImpl implements UtenteDao {
     }
 
     @Override
-    public List<Utente> trovaCustomers() {
-        try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            return session.createQuery("SELECT a FROM Utente a WHERE a.tipo=false", Utente.class).list();
-        } catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
-    }
-
-    @Override
     public Utente trovaUtenteDaId(int id) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             return session.createQuery("SELECT a FROM Utente a WHERE a.id = :id", Utente.class).setParameter("id", id).getSingleResult();
@@ -40,24 +30,18 @@ public class UtenteDaoImpl implements UtenteDao {
 
     @Override
     public List<Utente> filtra(String campo, String valore) {
-        switch (campo){
-            case "nome":
-                try(Session session=HibernateUtil.getSessionFactory().openSession()){
-                    return session.createQuery("SELECT a FROM Utente a WHERE a.nome=:valore", Utente.class).setParameter("valore", valore).list();
-                } catch (Exception e){
-                    System.out.println(e);
-                }
-                break;
-            case "cognome":
-                try(Session session=HibernateUtil.getSessionFactory().openSession()){
-                    return session.createQuery("SELECT a FROM Utente a WHERE a.cognome=:valore", Utente.class).setParameter("valore", valore).list();
-                } catch (Exception e){
-                    System.out.println(e);
-                }
-                break;
-            default:
-                System.out.println("Error");
-                break;
+        if(campo.equals("isAdmin")){
+            try(Session session=HibernateUtil.getSessionFactory().openSession()){
+                return session.createQuery("SELECT a FROM Utente a WHERE a.isAdmin=false", Utente.class).list();
+            } catch (Exception e){
+                System.out.println(e);
+            }
+        } else {
+            try(Session session=HibernateUtil.getSessionFactory().openSession()){
+                return session.createQuery("SELECT a FROM Utente a WHERE a."+campo+"=:valore", Utente.class).setParameter("valore", valore).list();
+            } catch (Exception e){
+                System.out.println(e);
+            }
         }
         return null;
     }

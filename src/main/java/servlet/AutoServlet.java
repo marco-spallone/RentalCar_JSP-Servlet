@@ -28,7 +28,7 @@ public class AutoServlet extends HttpServlet {
                 break;
             default:
                 List<Auto> auto = autoDao.elencoAuto();
-                request.setAttribute("tipo", request.getParameter("tipo"));
+                request.setAttribute("isAdmin", request.getParameter("isAdmin"));
                 request.setAttribute("auto", auto);
                 dispatcher = request.getRequestDispatcher("parcoAuto.jsp");
         }

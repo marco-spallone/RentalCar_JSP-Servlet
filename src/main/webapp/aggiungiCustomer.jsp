@@ -27,10 +27,10 @@
         <a class="nav-link" href="utenteServlet?id=${id}&action=home">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="autoServlet?tipo=1&id=${id}&action=home">Parco Auto</a>
+        <a class="nav-link" href="autoServlet?isAdmin=1&id=${id}&action=home">Parco Auto</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="utenteServlet?action=profilo&id=${id}&tipo=1">Profilo utente</a>
+        <a class="nav-link" href="utenteServlet?action=profilo&id=${id}&isAdmin=1">Profilo utente</a>
       </li>
     </ul>
   </div>
@@ -46,6 +46,7 @@
       <h2>Aggiungi cliente</h2>
       <form action="utenteServlet" method="post">
         <input type="hidden" name="action" value="aggiungi">
+        <input type="hidden" name="isAdmin" value="1">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome: </label>
           <input type="text" class="form-control" id="nome" name="nome">

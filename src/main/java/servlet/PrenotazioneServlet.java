@@ -28,10 +28,10 @@ public class PrenotazioneServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         List<Prenotazione> prenotazioni = prenotazioneDao.prenotazioniPerUtente(id);
         List<Auto> auto = autoDao.elencoAuto();
-        if(request.getParameter("tipo")==null){
-            request.setAttribute("tipo", "0");
+        if(request.getParameter("isAdmin")==null){
+            request.setAttribute("isAdmin", "0");
         }   else {
-            request.setAttribute("tipo", "1");
+            request.setAttribute("isAdmin", "1");
         }
         if(request.getParameter("myid")!=null){
             request.setAttribute("myid", request.getParameter("myid"));
@@ -99,7 +99,7 @@ public class PrenotazioneServlet extends HttpServlet {
                 prenotazioneDao.inserisciPrenotazione(pren);
                 request.setAttribute("action", "prenotazione_modificata");
                 request.setAttribute("id", id);
-                request.setAttribute("tipo", request.getParameter("tipo"));
+                request.setAttribute("isAdmin", request.getParameter("isAdmin"));
                 break;
             case "aggiunta_prenotazione":
                 request.setAttribute("id", request.getParameter("id"));
@@ -111,14 +111,14 @@ public class PrenotazioneServlet extends HttpServlet {
                 request.setAttribute("id", request.getParameter("id"));
                 request.setAttribute("idPren", request.getParameter("idPren"));
                 request.setAttribute("auto", autoDao.elencoAuto());
-                request.setAttribute("tipo", request.getParameter("tipo"));
+                request.setAttribute("isAdmin", request.getParameter("isAdmin"));
                 dispatcher = request.getRequestDispatcher("modificaPrenotazione.jsp");
                 dispatcher.forward(request, response);
                 break;
             case "elimina_prenotazione":
                 prenotazioneDao.eliminaPrenotazione(Integer.parseInt(request.getParameter("idPren")));
                 request.setAttribute("action", "pren_eliminata");
-                request.setAttribute("tipo", request.getParameter("tipo"));
+                request.setAttribute("isAdmin", request.getParameter("isAdmin"));
                 request.setAttribute("id", request.getParameter("id"));
                 break;
             case "filtra":
@@ -138,6 +138,7 @@ public class PrenotazioneServlet extends HttpServlet {
                 request.setAttribute("prenotazioni", filtrata);
                 dispatcher = request.getRequestDispatcher("viewPrenotazioni.jsp");
                 dispatcher.forward(request, response);
+                break;
             default:
                 request.setAttribute("action", "errore");
                 break;

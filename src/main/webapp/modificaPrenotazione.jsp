@@ -21,10 +21,10 @@
         <a class="nav-link" href="prenotazioneServlet?id=${id}">Home</a>
       </li>
       <li class="nav-item">
-         <a class="nav-link" href="autoServlet?tipo=0&id=${id}&action=home">Parco Auto</a>
+         <a class="nav-link" href="autoServlet?isAdmin=0&id=${id}&action=home">Parco Auto</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="utenteServlet?action=profilo&tipo=0&id=${id}">Profilo utente</a>
+        <a class="nav-link" href="utenteServlet?action=profilo&isAdmin=0&id=${id}">Profilo utente</a>
       </li>
     </ul>
   </div>

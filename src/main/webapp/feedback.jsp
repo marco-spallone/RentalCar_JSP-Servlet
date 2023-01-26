@@ -68,19 +68,19 @@
           </c:when>
           <c:when test="${action=='modifica_auto'}">
             <h3>Auto modificata con successo!</h3>
-            <a href="autoServlet?tipo=1&id=${id}&action=home"><button type="button" class="btn btn-success">Torna al parco auto</button></a>
+            <a href="autoServlet?isAdmin=1&id=${id}&action=home"><button type="button" class="btn btn-success">Torna al parco auto</button></a>
           </c:when>
           <c:when test="${action=='elimina_auto'}">
             <h3>Auto eliminata con successo!</h3>
-            <a href="autoServlet?tipo=1&id=${id}&action=home"><button type="button" class="btn btn-success">Torna al parco auto</button></a>
+            <a href="autoServlet?isAdmin=1&id=${id}&action=home"><button type="button" class="btn btn-success">Torna al parco auto</button></a>
           </c:when>
           <c:when test="${action=='redirect'}">
             <h2>Benvenuto ${utente.nome}</h2>
             <c:choose>
-              <c:when test="${tipo==1}">
+              <c:when test="${isAdmin==1}">
                 <a href="utenteServlet?id=${utente.idUtente}&action=home"><button type="button" class="btn btn-success">Vai alla home</button></a>
               </c:when>
-              <c:when test="${tipo==0}">
+              <c:when test="${isAdmin==0}">
                 <a href="prenotazioneServlet?id=${utente.idUtente}"><button type="button" class="btn btn-success">Vai alla home</button></a>
               </c:when>
               <c:otherwise></c:otherwise>
@@ -95,7 +95,7 @@
             <h2>Prenotazione modificata con successo!</h2>
             <h3>Attendere la conferma da parte dell'amministratore</h3>
             <c:choose>
-              <c:when test="${tipo=='1'}">
+              <c:when test="${isAdmin=='1'}">
                 <a href="utenteServlet?id=${id}&action=home"><button type="button" class="btn btn-success">Torna alla tua home</button></a>
               </c:when>
               <c:otherwise>
@@ -106,7 +106,7 @@
           <c:when test="${action=='pren_eliminata'}">
             <h2>Prenotazione eliminata con successo!</h2>
             <c:choose>
-              <c:when test="${tipo=='1'}">
+              <c:when test="${isAdmin=='1'}">
                 <a href="utenteServlet?id=${id}&action=home"><button type="button" class="btn btn-success">Torna alla tua home</button></a>
               </c:when>
               <c:otherwise>

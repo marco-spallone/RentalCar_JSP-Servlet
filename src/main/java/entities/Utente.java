@@ -3,9 +3,7 @@ package entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name="utente")
@@ -16,8 +14,8 @@ public class Utente implements Serializable {
     @Column(name = "id_utente")
     private int idUtente;
 
-    @Column(name="tipo")
-    private boolean tipo;
+    @Column(name="isAdmin")
+    private boolean isAdmin;
 
     @Column(name="nome")
     private String nome;
@@ -38,8 +36,8 @@ public class Utente implements Serializable {
 
     }
 
-    public Utente(boolean tipo, String nome, String cognome, String username, String password){
-        this.tipo=tipo;
+    public Utente(boolean isCustomer, String nome, String cognome, String username, String password){
+        this.isAdmin = isCustomer;
         this.nome=nome;
         this.cognome=cognome;
         this.username=username;
@@ -54,12 +52,12 @@ public class Utente implements Serializable {
         this.idUtente = idUtente;
     }
 
-    public boolean getTipo() {
-        return tipo;
+    public boolean getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setTipo(boolean tipo) {
-        this.tipo = tipo;
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public String getNome() {
@@ -78,8 +76,8 @@ public class Utente implements Serializable {
         this.cognome = cognome;
     }
 
-    public boolean isTipo() {
-        return tipo;
+    public boolean isIsAdmin() {
+        return isAdmin;
     }
 
     public String getUsername() {

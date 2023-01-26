@@ -33,7 +33,7 @@
         <ul class="navbar-nav">
             <li class="nav-item active">
                 <c:choose>
-                    <c:when test="${tipo=='1'}">
+                    <c:when test="${isAdmin=='1'}">
                         <a class="nav-link" href="utenteServlet?id=${myid}&action=home">Home</a>
                     </c:when>
                     <c:otherwise>
@@ -42,10 +42,10 @@
                 </c:choose>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="autoServlet?tipo=${tipo}&id=${myid}&action=home">Parco Auto</a>
+                <a class="nav-link" href="autoServlet?isAdmin=${isAdmin}&id=${myid}&action=home">Parco Auto</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="utenteServlet?action=profilo&tipo=${tipo}&id=${myid}">Profilo utente</a>
+                <a class="nav-link" href="utenteServlet?action=profilo&isAdmin=${isAdmin}&id=${myid}">Profilo utente</a>
             </li>
         </ul>
     </div>
@@ -61,7 +61,7 @@
             <h3>Prenotazioni effettuate</h3>
             <div class="row"><div class="mt-4 mb-4 col-sm-1">
                 <c:choose>
-                    <c:when test="${tipo=='1'}"></c:when>
+                    <c:when test="${isAdmin=='1'}"></c:when>
                     <c:otherwise>
                         <form action="prenotazioneServlet" method="post">
                             <input type="hidden" name="action" value="aggiunta_prenotazione">
@@ -71,29 +71,28 @@
                     </c:otherwise>
                 </c:choose>
             </div></div>
-            <div class="row"><div class="mt-2 mb-2">
+            <div class="form-horizontal"><div class="form-group mt-2 mb-2">
                 <form action="prenotazioneServlet" method="post">
                     <input type="hidden" name="action" value="filtra" />
                     <input type="hidden" name="id" value="${myid}" />
-                    <input type="hidden" name="tipo" value="${tipo}" />
-                    <div class="mb-3">
+                    <input type="hidden" name="isAdmin" value="${isAdmin}" />
+                    <div class="mb-3 d-inline-flex align-items-center col-sm-12">
                         <select class="form-select" id="filtraper" name="filtraper">
                             <option value="inizio" selected>Data inizio</option>
                             <option value="fine">Data fine</option>
                             <option value="targa">Targa auto</option>
                             <option value="confermata">Confermata</option>
                         </select>
-                    </div><div class="mb-3">
                     <input class="form-control" type="text" name="filtra" id="filtra" placeholder="Filtra..."/>
-                </div>
                     <button class="btn btn-warning" type="submit">Filtra</button>
+                    </div>
                 </form>
                 <c:choose>
-                    <c:when test="${tipo=='1'}">
-                        <a href="utenteServlet?id=${myid}&action=home"><button class="btn btn-danger" type="submit">Annulla</button></a>
+                    <c:when test="${isAdmin=='1'}">
+                        <a href="utenteServlet?id=${myid}&action=home"><button class="btn btn-danger" type="submit">Rimuovi filtro</button></a>
                     </c:when>
                     <c:otherwise>
-                        <a href="prenotazioneServlet?id=${myid}"><button class="btn btn-danger" type="submit">Annulla</button></a>
+                        <a href="prenotazioneServlet?id=${myid}"><button class="btn btn-danger" type="submit">Rimuovi filtro</button></a>
                     </c:otherwise>
                 </c:choose>
             </div></div>
@@ -121,7 +120,7 @@
                                             <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
                                         </svg>
                                         <c:choose>
-                                            <c:when test="${tipo==1}"></c:when>
+                                            <c:when test="${isAdmin==1}"></c:when>
                                             <c:otherwise>
                                                 <c:choose>
                                                     <c:when test="${giorni>=2}">
@@ -131,7 +130,7 @@
                                                                 <input type="hidden" name="action" value="modifica_prenotazione">
                                                                 <input type="hidden" name="id" value="${myid}">
                                                                 <input type="hidden" name="idPren" value="${prenotazioni.idPrenotazione}">
-                                                                <button type="submit" class="btn btn-outline-success">
+                                                                <button type="submit" class="btn btn-outline-success shadow-none">
                                                                 <i class="fa-solid fa-pencil fa-lg" style="color: green"></i>Modifica</button>
                                                             </form>
                                                         </td><td>
@@ -153,7 +152,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <c:choose>
-                                            <c:when test="${tipo=='1'}">
+                                            <c:when test="${isAdmin=='1'}">
                                                 <strong>Da confermare:</strong> <br>
                                                 <form action="prenotazioneServlet" method="post">
                                                     <input type="hidden" name="id" value=${prenotazioni.idPrenotazione} />
@@ -168,7 +167,7 @@
                                                     </i> Rifiuta</button>
                                                 </form>
                                                 <c:choose>
-                                                    <c:when test="${tipo=='1'}"></c:when>
+                                                    <c:when test="${isAdmin=='1'}"></c:when>
                                                     <c:otherwise>
                                                         <c:when test="${giorni>=2}">
                                                             </td>
@@ -176,7 +175,7 @@
                                                                 <form action="prenotazioneServlet" method="post">
                                                                     <input type="hidden" name="action" value="modifica_prenotazione">
                                                                     <input type="hidden" name="id" value="${myid}">
-                                                                    <input type="hidden" name="tipo" value="${tipo}">
+                                                                    <input type="hidden" name="isAdmin" value="${isAdmin}">
                                                                     <input type="hidden" name="idPren" value=${prenotazioni.idPrenotazione} />
                                                                     <button type="submit" class="btn btn-outline-success">
                                                                         <i class="fa-solid fa-pencil fa-lg" style="color: green"></i>Modifica</button>
@@ -185,7 +184,7 @@
                                                             <form action="prenotazioneServlet" method="post">
                                                                 <input type="hidden" name="action" value="elimina_prenotazione">
                                                                 <input type="hidden" name="id" value="${myid}">
-                                                                <input type="hidden" name="tipo" value="${tipo}">
+                                                                <input type="hidden" name="isAdmin" value="${isAdmin}">
                                                                 <input type="hidden" name="idPren" value="${prenotazioni.idPrenotazione}">
                                                                 <button type="submit" class="btn btn-outline-danger">
                                                                     <i class="fa-solid fa-trash fa-lg" style="color: red"></i>
@@ -206,7 +205,7 @@
                                                         <form action="prenotazioneServlet" method="post">
                                                             <input type="hidden" name="action" value="modifica_prenotazione">
                                                             <input type="hidden" name="id" value="${myid}">
-                                                            <input type="hidden" name="tipo" value="${tipo}">
+                                                            <input type="hidden" name="isAdmin" value="${isAdmin}">
                                                             <input type="hidden" name="idPren" value="${prenotazioni.idPrenotazione}">
                                                             <button type="submit" class="btn btn-outline-success">
                                                                 <i class="fa-solid fa-pencil fa-lg" style="color: green"></i>Modifica</button>
@@ -215,7 +214,7 @@
                                                         <form action="prenotazioneServlet" method="post">
                                                             <input type="hidden" name="action" value="elimina_prenotazione">
                                                             <input type="hidden" name="id" value="${myid}">
-                                                            <input type="hidden" name="tipo" value="${tipo}">
+                                                            <input type="hidden" name="isAdmin" value="${isAdmin}">
                                                             <input type="hidden" name="idPren" value="${prenotazioni.idPrenotazione}">
                                                             <button type="submit" class="btn btn-outline-danger">
                                                                 <i class="fa-solid fa-trash fa-lg" style="color: red"></i>

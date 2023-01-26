@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface UtenteDao {
     List<Utente> trovaUtenti();
-    List<Utente> trovaCustomers();
     Utente trovaUtenteDaId(int id);
     List<Utente> filtra(String campo, String valore);
     void inserisciOAggiornaUtente(Utente u);

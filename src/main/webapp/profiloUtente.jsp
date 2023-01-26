@@ -27,7 +27,7 @@
     <ul class="navbar-nav">
       <li class="nav-item active">
         <c:choose>
-          <c:when test="${tipo==1}">
+          <c:when test="${isAdmin==1}">
             <a class="nav-link" href="utenteServlet?id=${id}&action=home">Home</a>
           </c:when>
           <c:otherwise>
@@ -36,7 +36,7 @@
         </c:choose>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="autoServlet?tipo=${tipo}&id=${id}&action=home">Parco Auto</a>
+        <a class="nav-link" href="autoServlet?isAdmin=${isAdmin}&id=${id}&action=home">Parco Auto</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Profilo utente</a>
@@ -56,7 +56,7 @@
       <form action="utenteServlet" method="post">
         <input type="hidden" name="action" value="modifica">
         <input type="hidden" name="id" value="${id}">
-        <input type="hidden" name="tipo" value="${tipo}">
+        <input type="hidden" name="isAdmin" value="${isAdmin}">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome: </label>
           <input type="text" class="form-control" id="nome" name="nome">
