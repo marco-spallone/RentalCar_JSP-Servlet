@@ -16,29 +16,11 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Rental Car</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="prenotazioneServlet?id=${id}">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="autoServlet?id=${id}&isAdmin=0&action=home">Parco Auto</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="utenteServlet?action=profilo&id=${id}">Profilo utente</a>
-      </li>
-    </ul>
-  </div>
-  <div class="nav navbar-nav navbar-right">
-    <a href="loginPage.jsp" class="navbar-brand"><button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Esci</button></a>
-  </div>
-</nav>
+<jsp:include page="navbar.jsp">
+  <jsp:param name="url1" value="prenotazioneServlet?id=${id}"/>
+  <jsp:param name="url2" value="autoServlet?id=${id}&isAdmin=0&action=home"/>
+  <jsp:param name="url3" value="utenteServlet?action=profilo&id=${id}"/>
+</jsp:include>
 
 <!--AGGIUNTA PRENOTAZIONE-->
 <div class="container">
