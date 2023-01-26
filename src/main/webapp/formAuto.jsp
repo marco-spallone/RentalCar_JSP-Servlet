@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: marco
@@ -45,28 +46,33 @@
     <div class="mx-auto mt-5 col-sm-6">
       <h2>Modifica auto</h2>
       <form action="autoServlet" method="post">
-        <input type="hidden" name="action" value="modifica">
+        <input type="hidden" name="action" value="formauto">
         <input type="hidden" name="id" value="${id}">
-        <input type="hidden" name="idAuto" value="${idAuto}">
+        <c:choose>
+          <c:when test="${idAuto!=null}">
+            <input type="hidden" name="idAuto" value="${idAuto}">
+          </c:when>
+          <c:otherwise></c:otherwise>
+        </c:choose>
         <div class="mb-3">
           <label for="marca" class="form-label">Marca: </label>
-          <input type="text" class="form-control" id="marca" name="marca">
+          <input type="text" class="form-control" id="marca" name="marca" value="${auto.marca}">
         </div>
         <div class="mb-3">
           <label for="modello" class="form-label">Modello: </label>
-          <input type="text" class="form-control" id="modello" name="modello">
+          <input type="text" class="form-control" id="modello" name="modello" value="${auto.modello}">
         </div>
         <div class="mb-3">
           <label for="anno" class="form-label">Anno: </label>
-          <input type="number" class="form-control" id="anno" name="anno" placeholder="2010">
+          <input type="number" class="form-control" id="anno" name="anno" value="${auto.anno}">
         </div>
         <div class="mb-3">
           <label for="prezzo" class="form-label">Prezzo: </label>
-          <input type="number" class="form-control" id="prezzo" name="prezzo">
+          <input type="number" class="form-control" id="prezzo" name="prezzo" value="${auto.prezzo}">
         </div>
         <div class="mb-3">
           <label for="targa" class="form-label">Targa: </label>
-          <input type="text" class="form-control" id="targa" name="targa">
+          <input type="text" class="form-control" id="targa" name="targa" value="${auto.targa}">
         </div>
         <button type="submit" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
           <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>

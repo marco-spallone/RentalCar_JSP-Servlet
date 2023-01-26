@@ -28,17 +28,20 @@ public class UtenteServlet extends HttpServlet {
                 break;
             case "profilo":
                 request.setAttribute("id", request.getParameter("id"));
+                request.setAttribute("utente", utenteDao.trovaUtenteDaId(Integer.parseInt(request.getParameter("id"))));
                 request.setAttribute("isAdmin", request.getParameter("isAdmin"));
                 dispatcher = request.getRequestDispatcher("profiloUtente.jsp");
                 break;
             case "modifica":
                 request.setAttribute("id", request.getParameter("id"));
                 request.setAttribute("customer", request.getParameter("customer"));
-                dispatcher = request.getRequestDispatcher("modificaCustomer.jsp");
+                request.setAttribute("utente", utenteDao.trovaUtenteDaId(Integer.parseInt(request.getParameter("customer"))));
+                request.setAttribute("edit", "edit");
+                dispatcher = request.getRequestDispatcher("formUtente.jsp");
                 break;
             case "aggiungi":
                 request.setAttribute("id", request.getParameter("id"));
-                dispatcher = request.getRequestDispatcher("aggiungiCustomer.jsp");
+                dispatcher = request.getRequestDispatcher("formUtente.jsp");
                 break;
             default:
                 request.setAttribute("action", "errore");
@@ -51,10 +54,16 @@ public class UtenteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente u = new Utente();
-        if(request.getParameter("id")!=null){
-            u.setIdUtente(Integer.parseInt(request.getParameter("id")));
-            u.setIsAdmin(utenteDao.trovaUtenteDaId(Integer.parseInt(request.getParameter("id"))).getIsAdmin());
+        if(request.getParameter("customer")!=null){
+            u.setIdUtente(Integer.parseInt(request.getParameter("customer")));
+            u.setIsAdmin(utenteDao.trovaUtenteDaId(Integer.parseInt(request.getParameter("customer"))).getIsAdmin());
         } else u.setIsAdmin(false);
+        if(request.getParameter("richiestada")!=null && request.getParameter("richiestada").equals("profilo")){
+            u.setIdUtente(Integer.parseInt(request.getParameter("id")));
+            if(request.getParameter("isAdmin").equals("1")){
+                u.setIsAdmin(true);
+            }
+        }
         u.setNome(request.getParameter("nome"));
         u.setCognome(request.getParameter("cognome"));
         u.setUsername(request.getParameter("user"));
@@ -62,8 +71,7 @@ public class UtenteServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
         request.setAttribute("id", request.getParameter("id"));
         switch (request.getParameter("action")){
-            case "modifica":
-            case "aggiungi":
+            case "formutente":
                 utenteDao.inserisciOAggiornaUtente(u);
                 if(request.getParameter("isAdmin")!=null){
                     request.setAttribute("richiestada", request.getParameter("isAdmin"));

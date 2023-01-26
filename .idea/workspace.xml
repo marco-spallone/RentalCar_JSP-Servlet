@@ -9,25 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Implementazione filtro per le prenotazioni.">
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Cambio campo 'tipo' in 'isAdmin' nell'entità Utente e in tutte le voci correlate.&#10;-Eliminazione della funzione trovaCustomers(), reimplementata in modo diverso nella funzione filtra().">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/AutoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/AutoServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiAuto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiAuto.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiCustomer.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiPrenotazione.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiPrenotazione.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/feedback.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/feedback.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaAuto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaPrenotazione.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaPrenotazione.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/formAuto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/formUtente.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaPrenotazione.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/formPrenotazione.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/profiloUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profiloUtente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +270,7 @@
       <workItem from="1674634926244" duration="18859000" />
       <workItem from="1674659260362" duration="6656000" />
       <workItem from="1674722089596" duration="13019000" />
-      <workItem from="1674740338449" duration="864000" />
+      <workItem from="1674740338449" duration="9484000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -394,7 +391,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674726788144</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="-Cambio campo 'tipo' in 'isAdmin' nell'entità Utente e in tutte le voci correlate.&#10;-Eliminazione della funzione trovaCustomers(), reimplementata in modo diverso nella funzione filtra().">
+      <created>1674741298701</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1674741298701</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,6 +432,7 @@
     <MESSAGE value="-Creazione pagina di errore generica.&#10;-Implementazione modifica prenotazione. &#10;-Corretta e completata la navigazione tra tutte le pagine per tutti gli utenti,&#10;-Implementazione del profilo utente per modificare i propri dati." />
     <MESSAGE value="-Implementazione filtro per customers in modalità admin." />
     <MESSAGE value="-Implementazione filtro per le prenotazioni." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Implementazione filtro per le prenotazioni." />
+    <MESSAGE value="-Cambio campo 'tipo' in 'isAdmin' nell'entità Utente e in tutte le voci correlate.&#10;-Eliminazione della funzione trovaCustomers(), reimplementata in modo diverso nella funzione filtra()." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Cambio campo 'tipo' in 'isAdmin' nell'entità Utente e in tutte le voci correlate.&#10;-Eliminazione della funzione trovaCustomers(), reimplementata in modo diverso nella funzione filtra()." />
   </component>
 </project>

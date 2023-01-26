@@ -5,7 +5,6 @@ import dao.PrenotazioneDaoImpl;
 import dao.UtenteDaoImpl;
 import entities.Auto;
 import entities.Prenotazione;
-import entities.Utente;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,10 +12,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @WebServlet(name = "prenotazioneServlet", value = "/prenotazioneServlet")
 public class PrenotazioneServlet extends HttpServlet {
@@ -53,14 +50,14 @@ public class PrenotazioneServlet extends HttpServlet {
         RequestDispatcher dispatcher;
         switch (request.getParameter("action")){
             case "conferma":
-                prenotazioneDao.aggiornaStatoPrenotazione(id, true);
+                prenotazioneDao.aggiornaPrenotazione(id, true);
                 request.setAttribute("action", "conferma_prenotazione");
                 break;
             case "rifiuta":
                 prenotazioneDao.eliminaPrenotazione(id);
                 request.setAttribute("action", "rifiuta_prenotazione");
                 break;
-            case "aggiungi":
+            case "formpren":
                 Prenotazione p = new Prenotazione();
                 p.setUtente(utenteDao.trovaUtenteDaId(id));
                 if(request.getParameter("idPren")!=null){
@@ -78,28 +75,10 @@ public class PrenotazioneServlet extends HttpServlet {
                 p.setAuto(autoDao.trovaAutoDaTarga(request.getParameter("auto")));
                 prenotazioneDao.inserisciPrenotazione(p);
                 request.setAttribute("action", "prenotazione_inserita");
-                request.setAttribute("id", id);
-                break;
-            case "modifica":
-                Prenotazione pren = new Prenotazione();
-                pren.setUtente(utenteDao.trovaUtenteDaId(id));
-                if(request.getParameter("idPren")!=null){
-                    pren.setIdPrenotazione(Integer.parseInt(request.getParameter("idPren")));
+                if(request.getParameter("isAdmin")!=null){
+                    request.setAttribute("isAdmin", request.getParameter("isAdmin"));
                 }
-                try {
-                    Date dataInizio = new SimpleDateFormat("yyyy-MM-dd").parse(inizio);
-                    Date dataFine = new SimpleDateFormat("yyyy-MM-dd").parse(fine);
-                    pren.setDataInizio(dataInizio);
-                    pren.setDataFine(dataFine);
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-                pren.setConfermata(false);
-                pren.setAuto(autoDao.trovaAutoDaTarga(request.getParameter("auto")));
-                prenotazioneDao.inserisciPrenotazione(pren);
-                request.setAttribute("action", "prenotazione_modificata");
                 request.setAttribute("id", id);
-                request.setAttribute("isAdmin", request.getParameter("isAdmin"));
                 break;
             case "aggiunta_prenotazione":
                 request.setAttribute("id", request.getParameter("id"));
@@ -112,7 +91,8 @@ public class PrenotazioneServlet extends HttpServlet {
                 request.setAttribute("idPren", request.getParameter("idPren"));
                 request.setAttribute("auto", autoDao.elencoAuto());
                 request.setAttribute("isAdmin", request.getParameter("isAdmin"));
-                dispatcher = request.getRequestDispatcher("modificaPrenotazione.jsp");
+                request.setAttribute("prenotazione", prenotazioneDao.trovaPrenotazioneDaId(Integer.parseInt(request.getParameter("idPren"))));
+                dispatcher = request.getRequestDispatcher("formPrenotazione.jsp");
                 dispatcher.forward(request, response);
                 break;
             case "elimina_prenotazione":

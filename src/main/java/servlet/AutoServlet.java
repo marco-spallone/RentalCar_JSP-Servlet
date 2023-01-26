@@ -20,11 +20,13 @@ public class AutoServlet extends HttpServlet {
         request.setAttribute("id", request.getParameter("id"));
         switch (request.getParameter("action")){
             case "aggiungi":
-                dispatcher = request.getRequestDispatcher("aggiungiAuto.jsp");
-                break;
             case "modifica":
-                request.setAttribute("idAuto", request.getParameter("idAuto"));
-                dispatcher = request.getRequestDispatcher("modificaAuto.jsp");
+                if(request.getParameter("idAuto")!=null){
+                    request.setAttribute("idAuto", request.getParameter("idAuto"));
+                    request.setAttribute("auto", autoDao.trovaAutoDaId(Integer.parseInt(request.getParameter("idAuto"))));
+                }
+                request.setAttribute("id", request.getParameter("id"));
+                dispatcher = request.getRequestDispatcher("formAuto.jsp");
                 break;
             default:
                 List<Auto> auto = autoDao.elencoAuto();
@@ -40,8 +42,7 @@ public class AutoServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("feedback.jsp");
         request.setAttribute("id", request.getParameter("id"));
         switch (request.getParameter("action")){
-            case "modifica":
-            case "aggiungi":
+            case "formauto":
                 Auto a = new Auto();
                 if(request.getParameter("idAuto")!=null){
                     a.setIdAuto(Integer.parseInt(request.getParameter("idAuto")));

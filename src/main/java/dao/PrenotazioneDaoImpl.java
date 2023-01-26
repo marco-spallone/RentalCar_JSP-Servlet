@@ -116,7 +116,7 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
     }
 
     @Override
-    public void aggiornaStatoPrenotazione(int id, boolean confermata) {
+    public void aggiornaPrenotazione(int id, boolean confermata) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             Transaction txn = session.beginTransaction();
             session.createQuery("UPDATE Prenotazione SET confermata=:confermata WHERE idPrenotazione=:id").setParameter("confermata", confermata)

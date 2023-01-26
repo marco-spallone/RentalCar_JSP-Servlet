@@ -46,7 +46,7 @@
     <div class="mx-auto mt-5 col-sm-6">
       <h2>Aggiungi prenotazione</h2>
       <form action="prenotazioneServlet" method="post">
-        <input type="hidden" name="action" value="aggiungi">
+        <input type="hidden" name="action" value="formpren">
         <input type="hidden" name="id" value="${id}">
         <div class="mb-3">
           <label for="inizio" class="form-label">Data inizio: </label>

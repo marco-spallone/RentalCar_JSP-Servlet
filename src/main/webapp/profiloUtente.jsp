@@ -54,24 +54,25 @@
     <div class="mx-auto mt-5 col-sm-6">
       <h2>Modifica dati</h2>
       <form action="utenteServlet" method="post">
-        <input type="hidden" name="action" value="modifica">
+        <input type="hidden" name="action" value="formutente">
         <input type="hidden" name="id" value="${id}">
         <input type="hidden" name="isAdmin" value="${isAdmin}">
+        <input type="hidden" name="richiestada" value="profilo">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome: </label>
-          <input type="text" class="form-control" id="nome" name="nome">
+          <input type="text" class="form-control" id="nome" name="nome" value="${utente.nome}">
         </div>
         <div class="mb-3">
           <label for="cognome" class="form-label">Cognome: </label>
-          <input type="text" class="form-control" id="cognome" name="cognome">
+          <input type="text" class="form-control" id="cognome" name="cognome" value="${utente.cognome}">
         </div>
         <div class="mb-3">
           <label for="user" class="form-label">Username: </label>
-          <input type="text" class="form-control" id="user" name="user">
+          <input type="text" class="form-control" id="user" name="user" value="${utente.username}">
         </div>
         <div class="mb-3">
           <label for="pass" class="form-label">Password: </label>
-          <input type="password" class="form-control" id="pass" name="pass">
+          <input type="password" class="form-control" id="pass" name="pass" value="${utente.password}">
         </div>
         <button type="submit" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
           <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>

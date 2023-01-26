@@ -31,6 +31,16 @@ public class AutoDaoImpl implements AutoDao{
     }
 
     @Override
+    public Auto trovaAutoDaId(int id) {
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+            return (Auto) session.createQuery("SELECT a FROM Auto a WHERE a.id=:id").setParameter("id", id).getSingleResult();
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
     public void inserisciOAggiornaAuto(Auto a) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             session.beginTransaction();
