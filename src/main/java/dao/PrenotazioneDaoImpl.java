@@ -7,6 +7,8 @@ import entities.Utente;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -39,6 +41,65 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
             return (Prenotazione) session.createQuery("SELECT a FROM Prenotazione a WHERE a.id = :id").setParameter("id", id).getSingleResult();
         } catch(Exception e){
             System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Prenotazione> filtra(String campo, String valore) throws ParseException {
+        switch (campo){
+            case "inizio":
+                Date inizio = new SimpleDateFormat("yyyy-MM-dd").parse(valore);
+                try(Session session=HibernateUtil.getSessionFactory().openSession()){
+                    return session.createQuery("SELECT a FROM Prenotazione a WHERE a.dataInizio = :inizio", Prenotazione.class)
+                            .setParameter("inizio", inizio).list();
+                } catch(Exception e){
+                    System.out.println(e);
+                }
+                break;
+            case "fine":
+                Date fine = new SimpleDateFormat("yyyy-MM-dd").parse(valore);
+                try(Session session=HibernateUtil.getSessionFactory().openSession()){
+                    return session.createQuery("SELECT a FROM Prenotazione a WHERE a.dataFine = :fine", Prenotazione.class)
+                            .setParameter("fine", fine).list();
+                } catch(Exception e){
+                    System.out.println(e);
+                }
+                break;
+            case "targa":
+                try(Session session=HibernateUtil.getSessionFactory().openSession()){
+                    int valoreInt = Integer.parseInt(valore);
+                    return session.createQuery("SELECT a FROM Prenotazione a WHERE a.auto.idAuto = :valoreInt", Prenotazione.class)
+                            .setParameter("valoreInt", valoreInt).list();
+                } catch(Exception e){
+                    System.out.println(e);
+                }
+                break;
+            case "confermata":
+                boolean conf=false;
+                switch (valore){
+                    case "no":
+                    case "false":
+                        conf=false;
+                        break;
+                    case "si":
+                    case "true":
+                        conf=true;
+                        break;
+                    default:
+                        System.out.println("valore errato");
+                        break;
+                }
+                try(Session session=HibernateUtil.getSessionFactory().openSession()){
+                    return session.createQuery("SELECT a FROM Prenotazione a WHERE a.confermata = :conf", Prenotazione.class)
+                            .setParameter("conf", conf).list();
+                } catch(Exception e){
+                    System.out.println(e);
+                }
+                break;
+            default:
+                System.out.println("Error");
+                break;
         }
         return null;
     }

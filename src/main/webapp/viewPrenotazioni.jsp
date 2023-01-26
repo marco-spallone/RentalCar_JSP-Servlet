@@ -71,6 +71,32 @@
                     </c:otherwise>
                 </c:choose>
             </div></div>
+            <div class="row"><div class="mt-2 mb-2">
+                <form action="prenotazioneServlet" method="post">
+                    <input type="hidden" name="action" value="filtra" />
+                    <input type="hidden" name="id" value="${myid}" />
+                    <input type="hidden" name="tipo" value="${tipo}" />
+                    <div class="mb-3">
+                        <select class="form-select" id="filtraper" name="filtraper">
+                            <option value="inizio" selected>Data inizio</option>
+                            <option value="fine">Data fine</option>
+                            <option value="targa">Targa auto</option>
+                            <option value="confermata">Confermata</option>
+                        </select>
+                    </div><div class="mb-3">
+                    <input class="form-control" type="text" name="filtra" id="filtra" placeholder="Filtra..."/>
+                </div>
+                    <button class="btn btn-warning" type="submit">Filtra</button>
+                </form>
+                <c:choose>
+                    <c:when test="${tipo=='1'}">
+                        <a href="utenteServlet?id=${myid}&action=home"><button class="btn btn-danger" type="submit">Annulla</button></a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="prenotazioneServlet?id=${myid}"><button class="btn btn-danger" type="submit">Annulla</button></a>
+                    </c:otherwise>
+                </c:choose>
+            </div></div>
             <div id="tabPrenotazioni">
                 <table class="table table-striped" id="tab">
                     <thead>

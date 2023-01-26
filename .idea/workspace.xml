@@ -9,13 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Creazione pagina di errore generica.&#10;-Implementazione modifica prenotazione. &#10;-Corretta e completata la navigazione tra tutte le pagine per tutti gli utenti,&#10;-Implementazione del profilo utente per modificare i propri dati.">
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Implementazione filtro per customers in modalità admin.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UtenteDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +258,8 @@
       <workItem from="1674547417245" duration="12096000" />
       <workItem from="1674566906117" duration="12576000" />
       <workItem from="1674634926244" duration="18859000" />
-      <workItem from="1674659260362" duration="6389000" />
+      <workItem from="1674659260362" duration="6656000" />
+      <workItem from="1674722089596" duration="4571000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -366,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674660914495</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="-Implementazione filtro per customers in modalità admin.">
+      <created>1674666952087</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1674666952087</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,6 +405,7 @@
     <MESSAGE value="-Implementazione della funzione che permette ai customer di aggiungere una nuova prenotazione.&#10;-Sistemata la navigazione e alcuni bug.&#10;-Sostituiti gli if-then-else con switch in tutti i servlet.&#10;-Ottimizzazione del codice.&#10;-Implementazione della funzione di logout nella navbar di tutte le pagine." />
     <MESSAGE value="-Implementazione parco auto per customers.&#10;-Correzione bug.&#10;-Possibilità di modifica delle prenotazioni.&#10;-Correzioni nei redirect di alcune pagine.&#10;-Ottimizzazione codice su consigli di Fabio." />
     <MESSAGE value="-Creazione pagina di errore generica.&#10;-Implementazione modifica prenotazione. &#10;-Corretta e completata la navigazione tra tutte le pagine per tutti gli utenti,&#10;-Implementazione del profilo utente per modificare i propri dati." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Creazione pagina di errore generica.&#10;-Implementazione modifica prenotazione. &#10;-Corretta e completata la navigazione tra tutte le pagine per tutti gli utenti,&#10;-Implementazione del profilo utente per modificare i propri dati." />
+    <MESSAGE value="-Implementazione filtro per customers in modalità admin." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Implementazione filtro per customers in modalità admin." />
   </component>
 </project>

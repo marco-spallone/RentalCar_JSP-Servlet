@@ -13,6 +13,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -120,6 +121,23 @@ public class PrenotazioneServlet extends HttpServlet {
                 request.setAttribute("tipo", request.getParameter("tipo"));
                 request.setAttribute("id", request.getParameter("id"));
                 break;
+            case "filtra":
+                String campo = request.getParameter("filtraper");
+                String valore = request.getParameter("filtra");
+                List<Prenotazione> filtrata;
+                if(campo.equals("targa")){
+                    valore = String.valueOf(autoDao.trovaAutoDaTarga(request.getParameter("filtra")).getIdAuto());
+                }
+                try {
+                    filtrata = prenotazioneDao.filtra(campo, valore);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                request.setAttribute("myid", request.getParameter("id"));
+                request.setAttribute("action", "home");
+                request.setAttribute("prenotazioni", filtrata);
+                dispatcher = request.getRequestDispatcher("viewPrenotazioni.jsp");
+                dispatcher.forward(request, response);
             default:
                 request.setAttribute("action", "errore");
                 break;
