@@ -9,14 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Unione dei fileJSP relativi all'aggiunta e alla modifica di ogni entità.&#10;-Precompilazione dei form quando si vuole modificare un'auto, una prenotazione o un utente.">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/navbar.jsp" afterDir="false" />
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Completamento e correzione navbar e riferimenti ad essa collegati.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/AutoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/AutoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/UtenteServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiPrenotazione.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiPrenotazione.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/formAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/formAuto.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/formPrenotazione.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/formPrenotazione.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/formUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/formUtente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/homeAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/parcoAuto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/profiloUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profiloUtente.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/viewPrenotazioni.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +266,8 @@
       <workItem from="1674634926244" duration="18859000" />
       <workItem from="1674659260362" duration="6656000" />
       <workItem from="1674722089596" duration="13019000" />
-      <workItem from="1674740338449" duration="15708000" />
+      <workItem from="1674740338449" duration="15991000" />
+      <workItem from="1674806777540" duration="4340000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -397,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674750335170</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="-Implementazione di un'unica navbar.">
+      <created>1674757288345</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1674757288345</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,6 +445,8 @@
     <MESSAGE value="-Implementazione filtro per le prenotazioni." />
     <MESSAGE value="-Cambio campo 'tipo' in 'isAdmin' nell'entità Utente e in tutte le voci correlate.&#10;-Eliminazione della funzione trovaCustomers(), reimplementata in modo diverso nella funzione filtra()." />
     <MESSAGE value="-Unione dei fileJSP relativi all'aggiunta e alla modifica di ogni entità.&#10;-Precompilazione dei form quando si vuole modificare un'auto, una prenotazione o un utente." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Unione dei fileJSP relativi all'aggiunta e alla modifica di ogni entità.&#10;-Precompilazione dei form quando si vuole modificare un'auto, una prenotazione o un utente." />
+    <MESSAGE value="-Implementazione di un'unica navbar." />
+    <MESSAGE value="-Completamento e correzione navbar e riferimenti ad essa collegati." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Completamento e correzione navbar e riferimenti ad essa collegati." />
   </component>
 </project>

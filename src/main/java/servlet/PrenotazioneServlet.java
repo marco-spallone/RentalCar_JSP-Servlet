@@ -29,6 +29,7 @@ public class PrenotazioneServlet extends HttpServlet {
             request.setAttribute("isAdmin", "0");
         }   else {
             request.setAttribute("isAdmin", "1");
+            request.setAttribute("nav", request.getParameter("isAdmin"));
         }
         if(request.getParameter("myid")!=null){
             request.setAttribute("myid", request.getParameter("myid"));
@@ -77,6 +78,7 @@ public class PrenotazioneServlet extends HttpServlet {
                 request.setAttribute("action", "prenotazione_inserita");
                 if(request.getParameter("isAdmin")!=null){
                     request.setAttribute("isAdmin", request.getParameter("isAdmin"));
+                    request.setAttribute("nav", request.getParameter("isAdmin"));
                 }
                 request.setAttribute("id", id);
                 break;
@@ -115,6 +117,7 @@ public class PrenotazioneServlet extends HttpServlet {
                 }
                 request.setAttribute("myid", request.getParameter("id"));
                 request.setAttribute("action", "home");
+                request.setAttribute("nav", request.getParameter("isAdmin"));
                 request.setAttribute("prenotazioni", filtrata);
                 dispatcher = request.getRequestDispatcher("viewPrenotazioni.jsp");
                 dispatcher.forward(request, response);

@@ -17,36 +17,12 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Rental Car</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <c:choose>
-          <c:when test="${isAdmin==1}">
-            <a class="nav-link" href="utenteServlet?id=${id}&action=home">Home</a>
-          </c:when>
-          <c:otherwise>
-            <a class="nav-link" href="prenotazioneServlet?id=${id}">Home</a>
-          </c:otherwise>
-        </c:choose>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="autoServlet?isAdmin=${isAdmin}&id=${id}&action=home">Parco Auto</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Profilo utente</a>
-      </li>
-    </ul>
-  </div>
-  <div class="nav navbar-nav navbar-right">
-    <a href="loginPage.jsp" class="navbar-brand"><button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Esci</button></a>
-  </div>
-</nav>
+<jsp:include page="navbar.jsp">
+  <jsp:param name="url1" value="utenteServlet?id=${id}&action=home"/>
+  <jsp:param name="url2" value="autoServlet?isAdmin=${isAdmin}&id=${id}&action=home"/>
+  <jsp:param name="url3" value="#"/>
+  <jsp:param name="url4" value="prenotazioneServlet?id=${id}"/>
+</jsp:include>
 
 <!--FORM DI MODIFICA-->
 <div class="container">

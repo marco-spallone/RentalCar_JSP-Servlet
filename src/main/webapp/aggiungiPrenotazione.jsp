@@ -17,7 +17,7 @@
 <body>
 
 <jsp:include page="navbar.jsp">
-  <jsp:param name="url1" value="prenotazioneServlet?id=${id}"/>
+  <jsp:param name="url4" value="prenotazioneServlet?id=${id}"/>
   <jsp:param name="url2" value="autoServlet?id=${id}&isAdmin=0&action=home"/>
   <jsp:param name="url3" value="utenteServlet?action=profilo&id=${id}"/>
 </jsp:include>

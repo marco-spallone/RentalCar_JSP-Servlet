@@ -23,6 +23,7 @@ public class UtenteServlet extends HttpServlet {
             case "home":
                 List<Utente> customers = utenteDao.filtra("isAdmin", "0");
                 request.setAttribute("id", request.getParameter("id"));
+                request.setAttribute("nav", "1");
                 request.setAttribute("listaUt", customers);
                 dispatcher = request.getRequestDispatcher("homeAdmin.jsp");
                 break;
@@ -30,6 +31,7 @@ public class UtenteServlet extends HttpServlet {
                 request.setAttribute("id", request.getParameter("id"));
                 request.setAttribute("utente", utenteDao.trovaUtenteDaId(Integer.parseInt(request.getParameter("id"))));
                 request.setAttribute("isAdmin", request.getParameter("isAdmin"));
+                request.setAttribute("nav", request.getParameter("isAdmin"));
                 dispatcher = request.getRequestDispatcher("profiloUtente.jsp");
                 break;
             case "modifica":
@@ -37,10 +39,12 @@ public class UtenteServlet extends HttpServlet {
                 request.setAttribute("customer", request.getParameter("customer"));
                 request.setAttribute("utente", utenteDao.trovaUtenteDaId(Integer.parseInt(request.getParameter("customer"))));
                 request.setAttribute("edit", "edit");
+                request.setAttribute("nav", request.getParameter("isAdmin"));
                 dispatcher = request.getRequestDispatcher("formUtente.jsp");
                 break;
             case "aggiungi":
                 request.setAttribute("id", request.getParameter("id"));
+                request.setAttribute("nav", "1");
                 dispatcher = request.getRequestDispatcher("formUtente.jsp");
                 break;
             default:
@@ -75,12 +79,14 @@ public class UtenteServlet extends HttpServlet {
                 utenteDao.inserisciOAggiornaUtente(u);
                 if(request.getParameter("isAdmin")!=null){
                     request.setAttribute("richiestada", request.getParameter("isAdmin"));
+                    request.setAttribute("nav", request.getParameter("isAdmin"));
                 }
                 request.setAttribute("action", "modifica_utente");
                 break;
             case "elimina":
                 utenteDao.eliminaUtente(Integer.parseInt(request.getParameter("id")));
                 request.setAttribute("action", "elimina_utente");
+                request.setAttribute("id", request.getParameter("myid"));
                 break;
             case "login":
                 List<Utente> utenti = utenteDao.trovaUtenti();
@@ -116,6 +122,7 @@ public class UtenteServlet extends HttpServlet {
                 List<Utente> filtrata = utenteDao.filtra(campo, valore);
                 request.setAttribute("listaUt", filtrata);
                 request.setAttribute("action", "home");
+                request.setAttribute("nav", request.getParameter("isAdmin"));
                 dispatcher = request.getRequestDispatcher("homeAdmin.jsp");
                 break;
             default:

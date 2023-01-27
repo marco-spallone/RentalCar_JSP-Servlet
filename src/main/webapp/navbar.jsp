@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: marco
@@ -24,7 +25,14 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="${param.url1}">Home</a>
+        <c:choose>
+          <c:when test="${nav=='1'}">
+            <a class="nav-link" href="${param.url1}">Home</a>
+          </c:when>
+          <c:otherwise>
+            <a class="nav-link" href="${param.url4}">Home</a>
+          </c:otherwise>
+        </c:choose>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${param.url2}">Parco Auto</a>

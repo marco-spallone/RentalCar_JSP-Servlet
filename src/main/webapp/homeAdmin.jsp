@@ -34,6 +34,7 @@
                 <form action="utenteServlet" method="post">
                     <input type="hidden" name="action" value="filtra" />
                     <input type="hidden" name="id" value="${id}" />
+                    <input type="hidden" name="isAdmin" value="1" />
                     <div class="mb-3 d-inline-flex align-items-center col-sm-12">
                         <select class="form-select" id="filtraper" name="filtraper">
                             <option value="nome" selected>Nome</option>
@@ -59,7 +60,7 @@
                             <td>${utenti.nome}</td>
                             <td>${utenti.cognome}</td>
                             <td>
-                                <a href="utenteServlet?id=${id}&action=modifica&customer=${utenti.idUtente}">
+                                <a href="utenteServlet?id=${id}&action=modifica&customer=${utenti.idUtente}&isAdmin=1">
                                     <button type="submit" class="btn"><i class="fa-solid fa-pencil fa-lg" style="color: #f0ad4e"></i></button>
                                 </a>
                             </td>
@@ -75,6 +76,7 @@
                                 <form action="utenteServlet" method="post">
                                     <input type="hidden" name="action" value="elimina">
                                     <input type="hidden" name="id" value="${utenti.idUtente}">
+                                    <input type="hidden" name="myid" value="${id}">
                                     <button type="submit" class="btn"><i class="fa-solid fa-trash fa-lg" style="color: red"></i></button>
                                 </form>
                             </td>

@@ -26,11 +26,13 @@ public class AutoServlet extends HttpServlet {
                     request.setAttribute("auto", autoDao.trovaAutoDaId(Integer.parseInt(request.getParameter("idAuto"))));
                 }
                 request.setAttribute("id", request.getParameter("id"));
+                request.setAttribute("nav", "1");
                 dispatcher = request.getRequestDispatcher("formAuto.jsp");
                 break;
             default:
                 List<Auto> auto = autoDao.elencoAuto();
                 request.setAttribute("isAdmin", request.getParameter("isAdmin"));
+                request.setAttribute("nav", request.getParameter("isAdmin"));
                 request.setAttribute("auto", auto);
                 dispatcher = request.getRequestDispatcher("parcoAuto.jsp");
         }
@@ -58,6 +60,7 @@ public class AutoServlet extends HttpServlet {
             case "elimina":
                 autoDao.eliminaAuto(Integer.parseInt(request.getParameter("idAuto")));
                 request.setAttribute("action", "elimina_auto");
+                request.setAttribute("nav", "1");
                 break;
             default:
                 request.setAttribute("action", "errore");
