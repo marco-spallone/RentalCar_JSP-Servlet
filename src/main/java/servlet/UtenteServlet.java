@@ -89,22 +89,11 @@ public class UtenteServlet extends HttpServlet {
                 request.setAttribute("id", request.getParameter("myid"));
                 break;
             case "login":
-                List<Utente> utenti = utenteDao.trovaUtenti();
-                Utente utenteLoggato = new Utente();
-                boolean login = false;
-                for(Utente utente:utenti) {
-                    utente = utenteDao.login(request.getParameter("user"),request.getParameter("pass"));
-                    if(utente != null){
-                        login = true;
-                        utenteLoggato = utente;
-                    } else {
-                        System.out.println("ERRORE!");
-                    }
-                }
-                if(login){
-                    request.setAttribute("utente", utenteLoggato);
+                Utente utente = utenteDao.login(request.getParameter("user"),request.getParameter("pass"));
+                if(utente!=null){
+                    request.setAttribute("utente", utente);
                     request.setAttribute("action", "redirect");
-                    if(utenteLoggato.getIsAdmin()){
+                    if(utente.getIsAdmin()){
                         request.setAttribute("isAdmin", 1);
                     } else {
                         request.setAttribute("isAdmin", 0);

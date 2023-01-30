@@ -46,6 +46,17 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
     }
 
     @Override
+    public List<Prenotazione> prenotazioniPerMacchina(int idAuto) {
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+            return session.createQuery("SELECT a FROM Prenotazione a WHERE a.auto.id = :idAuto", Prenotazione.class)
+                    .setParameter("idAuto", idAuto).list();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
     public List<Prenotazione> filtra(String campo, String valore) throws ParseException {
         switch (campo){
             case "inizio":

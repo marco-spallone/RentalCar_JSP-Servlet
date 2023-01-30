@@ -74,6 +74,10 @@
             <h3>Auto eliminata con successo!</h3>
             <a href="autoServlet?isAdmin=1&id=${id}&action=home"><button type="button" class="btn btn-success">Torna al parco auto</button></a>
           </c:when>
+          <c:when test="${action=='gia_selez'}">
+            <h2>L'auto selezionata è già stata prenotata per quelle date</h2>
+            <a href="prenotazioneServlet?id=${id}"><button type="button" class="btn btn-success">Vai alla home</button></a>
+          </c:when>
           <c:when test="${action=='redirect'}">
             <h2>Benvenuto ${utente.nome}</h2>
             <c:choose>

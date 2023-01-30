@@ -9,6 +9,7 @@ import entities.Prenotazione;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import javax.swing.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -60,6 +61,7 @@ public class PrenotazioneServlet extends HttpServlet {
                 break;
             case "formpren":
                 Prenotazione p = new Prenotazione();
+                boolean autoSelez = false;
                 p.setUtente(utenteDao.trovaUtenteDaId(id));
                 if(request.getParameter("idPren")!=null){
                     p.setIdPrenotazione(Integer.parseInt(request.getParameter("idPren")));
@@ -73,15 +75,29 @@ public class PrenotazioneServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 p.setConfermata(false);
-                p.setAuto(autoDao.trovaAutoDaTarga(request.getParameter("auto")));
-                prenotazioneDao.inserisciPrenotazione(p);
-                request.setAttribute("action", "prenotazione_inserita");
-                if(request.getParameter("isAdmin")!=null){
-                    request.setAttribute("isAdmin", request.getParameter("isAdmin"));
-                    request.setAttribute("nav", request.getParameter("isAdmin"));
+                Auto a = autoDao.trovaAutoDaTarga(request.getParameter("auto"));
+                List<Prenotazione> prenoMacchina = prenotazioneDao.prenotazioniPerMacchina(a.getIdAuto());
+                for (Prenotazione pren : prenoMacchina) {
+                    if(pren.isConfermata() && (p.getDataInizio().after(pren.getDataInizio()) && p.getDataInizio().before(pren.getDataFine()))
+                        || (p.getDataFine().after(pren.getDataInizio()) && p.getDataInizio().before(pren.getDataFine()))){
+                        autoSelez=true;
+                    }
                 }
-                request.setAttribute("id", id);
-                break;
+                if(autoSelez){
+                    request.setAttribute("action", "gia_selez");
+                    request.setAttribute("id", request.getParameter("id"));
+                    break;
+                } else {
+                    p.setAuto(a);
+                    prenotazioneDao.inserisciPrenotazione(p);
+                    request.setAttribute("action", "prenotazione_inserita");
+                    if(request.getParameter("isAdmin")!=null){
+                        request.setAttribute("isAdmin", request.getParameter("isAdmin"));
+                        request.setAttribute("nav", request.getParameter("isAdmin"));
+                    }
+                    request.setAttribute("id", id);
+                    break;
+                }
             case "aggiunta_prenotazione":
                 request.setAttribute("id", request.getParameter("id"));
                 request.setAttribute("auto", autoDao.elencoAuto());

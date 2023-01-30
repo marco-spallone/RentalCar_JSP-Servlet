@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.Date;
 import java.util.List;
 
 public class AutoDaoImpl implements AutoDao{
@@ -37,6 +38,12 @@ public class AutoDaoImpl implements AutoDao{
         } catch (Exception e){
             System.out.println(e);
         }
+        return null;
+    }
+
+    @Override
+    public List<Auto> autoNonPrenotate(Date inizio, Date fine) {
+
         return null;
     }
 
