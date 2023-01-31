@@ -68,9 +68,7 @@ public class PrenotazioneServlet extends HttpServlet {
                         List<Auto> elencoAuto = autoDao.elencoAuto();
                         List<Auto> autoPrenotate = new ArrayList<>();
                         for (Prenotazione x : prenotazioniDate) {
-                            if (x.isConfermata()) {
-                                autoPrenotate.add(x.getAuto());
-                            }
+                            autoPrenotate.add(x.getAuto());
                         }
                         Iterator<Auto> iter1 = elencoAuto.iterator();
                         Iterator<Auto> iter2 = autoPrenotate.iterator();

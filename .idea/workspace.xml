@@ -10,8 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Fix Prenotazioni">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +259,7 @@
       <workItem from="1674740338449" duration="15991000" />
       <workItem from="1674806777540" duration="4340000" />
       <workItem from="1675080068613" duration="16163000" />
-      <workItem from="1675152866778" duration="9215000" />
+      <workItem from="1675152866778" duration="10087000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -423,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675158595290</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="-Fix Prenotazioni">
+      <created>1675163018102</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1675163018102</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
