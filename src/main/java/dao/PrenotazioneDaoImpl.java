@@ -48,9 +48,9 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
     @Override
     public List<Prenotazione> prenotazioniDate(Date inizio, Date fine) {
         try(Session session= HibernateUtil.getSessionFactory().openSession()){
-            return session.createQuery("SELECT a FROM Prenotazione a WHERE (a.dataInizio<=:inizio AND a.dataFine>=:inizio) OR " +
-                    "(a.dataInizio<=:fine AND a.dataFine>=:fine) OR (a.dataInizio>=:inizio AND a.dataInizio<=:fine) OR (a.dataInizio<=:inizio AND " +
-                                    "a.dataFine<=:fine)", Prenotazione.class).setParameter("inizio", inizio).setParameter("fine", fine).list();
+            return session.createQuery("SELECT a FROM Prenotazione a WHERE (a.dataInizio BETWEEN :inizio AND :fine) OR (a.dataFine BETWEEN :inizio AND :fine)" +
+                            "OR (a.dataInizio<=:inizio AND a.dataFine>=:fine)",
+                    Prenotazione.class).setParameter("inizio", inizio).setParameter("fine", fine).list();
         } catch (Exception e){
             System.out.println(e);
         }
