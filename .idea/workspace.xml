@@ -9,17 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Fix">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/selectAuto.jsp" afterDir="false" />
+    <list default="true" id="62ac6458-1869-487a-aed3-01f03c370068" name="Changes" comment="-Fix Prenotazioni">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AutoDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PrenotazioneDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/aggiungiPrenotazione.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/aggiungiPrenotazione.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/feedback.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/feedback.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/formPrenotazione.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/formPrenotazione.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +260,7 @@
       <workItem from="1674740338449" duration="15991000" />
       <workItem from="1674806777540" duration="4340000" />
       <workItem from="1675080068613" duration="16163000" />
-      <workItem from="1675152866778" duration="4315000" />
+      <workItem from="1675152866778" duration="5695000" />
     </task>
     <task id="LOCAL-00001" summary="Creazione DB e tabelle.">
       <created>1674038937915</created>
@@ -417,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675088767462</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="-Fix Prenotazioni">
+      <created>1675157491911</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1675157491911</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -456,18 +455,10 @@
     <MESSAGE value="-Implementazione di un'unica navbar." />
     <MESSAGE value="-Completamento e correzione navbar e riferimenti ad essa collegati." />
     <MESSAGE value="-Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Fix" />
+    <MESSAGE value="-Fix Prenotazioni" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Fix Prenotazioni" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/servlet/PrenotazioneServlet.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="entities.Prenotazione" memberName="idPrenotazione" />
