@@ -64,6 +64,12 @@ public class PrenotazioneServlet extends HttpServlet {
                     try {
                         Date in = new SimpleDateFormat("yyyy-MM-dd").parse(inizio);
                         Date fin = new SimpleDateFormat("yyyy-MM-dd").parse(fine);
+                        if(in.after(fin)){
+                            request.setAttribute("action", "data_nonvalida");
+                            request.setAttribute("id", request.getParameter("id"));
+                            dispatcher = request.getRequestDispatcher("feedback.jsp");
+                            dispatcher.forward(request, response);
+                        }
                         List<Prenotazione> prenotazioniDate = prenotazioneDao.prenotazioniDate(in, fin);
                         List<Auto> elencoAuto = autoDao.elencoAuto();
                         List<Auto> autoPrenotate = new ArrayList<>();
