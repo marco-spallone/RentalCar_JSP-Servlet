@@ -13,26 +13,26 @@ import javax.swing.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @WebServlet(name = "prenotazioneServlet", value = "/prenotazioneServlet")
 public class PrenotazioneServlet extends HttpServlet {
     private final PrenotazioneDaoImpl prenotazioneDao = new PrenotazioneDaoImpl();
     private final UtenteDaoImpl utenteDao = new UtenteDaoImpl();
     private final AutoDaoImpl autoDao = new AutoDaoImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         List<Prenotazione> prenotazioni = prenotazioneDao.prenotazioniPerUtente(id);
         List<Auto> auto = autoDao.elencoAuto();
-        if(request.getParameter("isAdmin")==null){
+        if (request.getParameter("isAdmin") == null) {
             request.setAttribute("isAdmin", "0");
-        }   else {
+        } else {
             request.setAttribute("isAdmin", "1");
             request.setAttribute("nav", request.getParameter("isAdmin"));
         }
-        if(request.getParameter("myid")!=null){
+        if (request.getParameter("myid") != null) {
             request.setAttribute("myid", request.getParameter("myid"));
         } else {
             request.setAttribute("myid", request.getParameter("id"));
@@ -46,11 +46,11 @@ public class PrenotazioneServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id=Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         String inizio = request.getParameter("inizio");
         String fine = request.getParameter("fine");
         RequestDispatcher dispatcher;
-        switch (request.getParameter("action")){
+        switch (request.getParameter("action")) {
             case "conferma":
                 prenotazioneDao.aggiornaPrenotazione(id, true);
                 request.setAttribute("action", "conferma_prenotazione");
@@ -60,38 +60,66 @@ public class PrenotazioneServlet extends HttpServlet {
                 request.setAttribute("action", "rifiuta_prenotazione");
                 break;
             case "formpren":
-                Prenotazione p = new Prenotazione();
-                boolean autoSelez = false;
-                p.setUtente(utenteDao.trovaUtenteDaId(id));
-                if(request.getParameter("idPren")!=null){
-                    p.setIdPrenotazione(Integer.parseInt(request.getParameter("idPren")));
-                }
-                try {
-                    Date dataInizio = new SimpleDateFormat("yyyy-MM-dd").parse(inizio);
-                    Date dataFine = new SimpleDateFormat("yyyy-MM-dd").parse(fine);
-                    p.setDataInizio(dataInizio);
-                    p.setDataFine(dataFine);
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-                p.setConfermata(false);
-                Auto a = autoDao.trovaAutoDaTarga(request.getParameter("auto"));
-                List<Prenotazione> prenoMacchina = prenotazioneDao.prenotazioniPerMacchina(a.getIdAuto());
-                for (Prenotazione pren : prenoMacchina) {
-                    if(pren.isConfermata() && (p.getDataInizio().after(pren.getDataInizio()) && p.getDataInizio().before(pren.getDataFine()))
-                        || (p.getDataFine().after(pren.getDataInizio()) && p.getDataInizio().before(pren.getDataFine()))){
-                        autoSelez=true;
+                if (request.getParameter("autoSel").equals("no") && inizio != null && fine != null) {
+                    try {
+                        Date in = new SimpleDateFormat("yyyy-MM-dd").parse(inizio);
+                        Date fin = new SimpleDateFormat("yyyy-MM-dd").parse(fine);
+                        List<Prenotazione> prenotazioniDate = prenotazioneDao.prenotazioniDate(in, fin);
+                        List<Auto> elencoAuto = autoDao.elencoAuto();
+                        List<Auto> autoPrenotate = new ArrayList<>();
+                        for (Prenotazione x : prenotazioniDate) {
+                            if (x.isConfermata()) {
+                                autoPrenotate.add(x.getAuto());
+                            }
+                        }
+                        Iterator<Auto> iter1 = elencoAuto.iterator();
+                        Iterator<Auto> iter2 = autoPrenotate.iterator();
+                        while (iter1.hasNext()) {
+                            Auto auto1 = iter1.next();
+                            while (iter2.hasNext()) {
+                                Auto auto2 = iter2.next();
+                                if (auto1.getTarga().equals(auto2.getTarga())) {
+                                    iter1.remove();
+                                    break;
+                                }
+                            }
+                        }
+                        request.setAttribute("auto", elencoAuto);
+                        request.setAttribute("inizio", inizio);
+                        request.setAttribute("fine", fine);
+                        request.setAttribute("id", request.getParameter("id"));
+                        dispatcher = request.getRequestDispatcher("selectAuto.jsp");
+                        dispatcher.forward(request, response);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
                     }
-                }
-                if(autoSelez){
-                    request.setAttribute("action", "gia_selez");
-                    request.setAttribute("id", request.getParameter("id"));
-                    break;
-                } else {
-                    p.setAuto(a);
+                } else if (request.getParameter("autoSel").equals("si")) {
+                    Prenotazione p = new Prenotazione();
+                    p.setUtente(utenteDao.trovaUtenteDaId(id));
+                    if (request.getParameter("idPren") != null) {
+                        p.setIdPrenotazione(Integer.parseInt(request.getParameter("idPren")));
+                    }
+                    try {
+                        Date dataInizio = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("inizio"));
+                        Date dataFine = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("fine"));
+                        p.setDataInizio(dataInizio);
+                        p.setDataFine(dataFine);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    p.setConfermata(false);
+                    if (autoDao.trovaAutoDaTarga(request.getParameter("auto")) != null) {
+                        p.setAuto(autoDao.trovaAutoDaTarga(request.getParameter("auto")));
+                    } else {
+                        request.setAttribute("id", request.getParameter("id"));
+                        request.setAttribute("action", "nessuna_auto");
+                        dispatcher = request.getRequestDispatcher("feedback.jsp");
+                        dispatcher.forward(request, response);
+                        break;
+                    }
                     prenotazioneDao.inserisciPrenotazione(p);
                     request.setAttribute("action", "prenotazione_inserita");
-                    if(request.getParameter("isAdmin")!=null){
+                    if (request.getParameter("isAdmin") != null) {
                         request.setAttribute("isAdmin", request.getParameter("isAdmin"));
                         request.setAttribute("nav", request.getParameter("isAdmin"));
                     }
@@ -123,7 +151,7 @@ public class PrenotazioneServlet extends HttpServlet {
                 String campo = request.getParameter("filtraper");
                 String valore = request.getParameter("filtra");
                 List<Prenotazione> filtrata;
-                if(campo.equals("targa")){
+                if (campo.equals("targa")) {
                     valore = String.valueOf(autoDao.trovaAutoDaTarga(request.getParameter("filtra")).getIdAuto());
                 }
                 try {

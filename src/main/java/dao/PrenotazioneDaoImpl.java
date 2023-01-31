@@ -46,11 +46,13 @@ public class PrenotazioneDaoImpl implements PrenotazioneDao{
     }
 
     @Override
-    public List<Prenotazione> prenotazioniPerMacchina(int idAuto) {
-        try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            return session.createQuery("SELECT a FROM Prenotazione a WHERE a.auto.id = :idAuto", Prenotazione.class)
-                    .setParameter("idAuto", idAuto).list();
-        } catch(Exception e){
+    public List<Prenotazione> prenotazioniDate(Date inizio, Date fine) {
+        try(Session session= HibernateUtil.getSessionFactory().openSession()){
+            return session.createQuery("SELECT a FROM Prenotazione a WHERE (a.dataInizio<=:inizio AND a.dataFine>=:inizio) OR " +
+                    "(a.dataInizio<=:fine AND a.dataFine>=:fine) OR (a.dataInizio>=:inizio AND a.dataInizio<=:fine)", Prenotazione.class)
+                    .setParameter("inizio", inizio).setParameter("fine", fine)
+                    .list();
+        } catch (Exception e){
             System.out.println(e);
         }
         return null;

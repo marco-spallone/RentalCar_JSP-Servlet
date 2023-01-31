@@ -11,7 +11,7 @@ public interface PrenotazioneDao {
     List<Prenotazione> elencoPrenotazioni();
     List<Prenotazione> prenotazioniPerUtente(int id);
     Prenotazione trovaPrenotazioneDaId(int id);
-    List<Prenotazione> prenotazioniPerMacchina(int idAuto);
+    List<Prenotazione> prenotazioniDate(Date inizio, Date fine);
     List<Prenotazione> filtra(String campo, String valore) throws ParseException;
     void inserisciPrenotazione(Prenotazione p);
     void aggiornaPrenotazione(int id, boolean confermata);

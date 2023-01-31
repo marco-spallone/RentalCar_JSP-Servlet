@@ -42,12 +42,6 @@ public class AutoDaoImpl implements AutoDao{
     }
 
     @Override
-    public List<Auto> autoNonPrenotate(Date inizio, Date fine) {
-
-        return null;
-    }
-
-    @Override
     public void inserisciOAggiornaAuto(Auto a) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             session.beginTransaction();

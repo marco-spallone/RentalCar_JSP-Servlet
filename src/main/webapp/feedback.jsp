@@ -78,6 +78,10 @@
             <h2>L'auto selezionata è già stata prenotata per quelle date</h2>
             <a href="prenotazioneServlet?id=${id}"><button type="button" class="btn btn-success">Vai alla home</button></a>
           </c:when>
+          <c:when test="${action=='nessuna_auto'}">
+            <h2>Nessuna auto è stata selezionata</h2>
+            <a href="prenotazioneServlet?id=${id}"><button type="button" class="btn btn-success">Vai alla home</button></a>
+          </c:when>
           <c:when test="${action=='redirect'}">
             <h2>Benvenuto ${utente.nome}</h2>
             <c:choose>
